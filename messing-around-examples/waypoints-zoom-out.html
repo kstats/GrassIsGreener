@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <style type="text/css">
+    .container {
+      width: 100%;
+      height: 2800px;
+    }
+
+    #individual {
+      width: 100%;
+      position: fixed;
+      height: 100%;
+      margin: auto;  
+      background-color: coral;
+      left: 0px;
+      top: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="individual">
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+  let zoomOutIndividual = () => {
+    let windowHeight = $(window).height();
+    let windowWidth = $(window).width();
+    let documentHeight = $(document).height();
+    let currScroll = $(document).scrollTop();
+
+    let proportion = currScroll/(documentHeight - windowHeight);
+
+    $("#individual").css("width", (1 - proportion).toLocaleString("en", {style: "percent"}))
+    $("#individual").css("height", (1 - proportion).toLocaleString("en", {style: "percent"}))
+    $("#individual").css("left", windowWidth * proportion / 2)
+    $("#individual").css("top", windowHeight * proportion / 2)
+
+    console.log((1 - proportion).toLocaleString("en", {style: "percent"}), windowWidth * proportion / 2)
+  }
+
+  document.addEventListener("scroll", zoomOutIndividual)
+
+  // function scroll(elmtName, func) {
+  //   return new Waypoint({
+  //     element: document.getElementById(elmtName),
+  //     handler: func,
+  //   })
+  // };
+
+</script>
