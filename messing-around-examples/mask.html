@@ -64,7 +64,8 @@
                     .attr("height", 100)
                     .attr("mask", "url(#" + name + "iconmask)")
                     .attr("fill", color)
-                    .attr("transform", "scale(2)")
+                    .attr("transform", "scale(4)")
+                    .on("ontouchstart" in document ? "touchmove" : "mousemove", particleTwo);
             }
 
             //add a row of use elements which point to our masked element
@@ -79,7 +80,7 @@
                     .attr("transform", function(d,i) {
                            return "translate(" + [x + 50 * i, y] + ")"
                     })
-                    .on("ontouchstart" in document ? "touchmove" : "mousemove", particleTwo);
+                    
             }
 
             // animation code
@@ -105,7 +106,23 @@
             }
 
             function particleTwo() {
-                console.log("inside particleTWo function");
+                console.log("inside particleTwo function");
+                var m = d3.mouse(this);
+
+                svg.insert("circle", "rect")
+                    .attr("cx", m[0])
+                    .attr("cy", m[1])
+                    .attr("r", 1e-6)
+                    .style("stroke", d3.hsl((i = (i + 1) % 360), 1, .5))
+                    .style("stroke-opacity", 1)
+                    .transition()
+                    .duration(2000)
+                    .ease(Math.sqrt)
+                    .attr("r", 100)
+                    .style("stroke-opacity", 1e-6)
+                    .remove();
+
+                d3.event.preventDefault();
             }
 
 
