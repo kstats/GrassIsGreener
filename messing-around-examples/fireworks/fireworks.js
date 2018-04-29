@@ -98,8 +98,8 @@ var Fireworks = (function() {
      * detected viewport size
      */
     function setMainCanvasDimensions() {
-      mainCanvas.width = 500;
-      mainCanvas.height = 500;
+      mainCanvas.width = viewportWidth;
+      mainCanvas.height = viewportHeight;
     }
   
     /**
@@ -197,8 +197,8 @@ var Fireworks = (function() {
     function onWindowResize() {
       //viewportWidth = window.innerWidth;
       //viewportHeight = window.innerHeight;
-      viewportHeight = 200;
-      viewportHeight = 200;
+      viewportHeight = 300;
+      viewportWidth = 300;
     }
   
     // declare an API
