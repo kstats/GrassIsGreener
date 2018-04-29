@@ -60,6 +60,9 @@ var svg = d3.select("#rectangle")
 d3.select("#forest-image")
   .on("click", clickForest);
 
+d3.select("#city-image")
+  .on("click", clickCity);
+
 /*
  * Particle handling functions and variable start here
  */
@@ -70,6 +73,11 @@ var circle_group = svg.append("g")
 var id = 0, // to keep track of each particle
     forestColors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624', '#234426', '#7CFF89'],
     forestParticles = [];
+    cityColors = ['#F7EDF0', '#F4C6D4', '#F4ABC1', '#F4A8BF', '#F481A4', '#FF8CAE', '#FF2B6A'],
+    cityParticles = [];
+
+var colorArray = forestColors,
+    particleArray = forestParticles;
 
 var circle_size = { "min" : 8 * width/2000, "max" :32 * width/2000 },
     force = { "min" : 6 * width/2000, "max" : 10 * width/2000 };
@@ -88,7 +96,7 @@ function spawn(x, y) {
         alive: true,
         radius: get_random_number( circle_size.min, circle_size.max ),
         wander: get_random_number( 1, 1.5 ),
-        color: forestColors[ Math.round( get_random_number(0, forestColors.length-1)) ],
+        color: colorArray[ Math.round( get_random_number(0, colorArray.length-1)) ],
         drag: get_random_number( 0.2, 0.99 ),
         age: get_random_number( 0.92, 0.98 ),
         theta: get_random_number( 0,  2 * Math.PI ),
@@ -101,7 +109,7 @@ function spawn(x, y) {
     particle.vx = Math.sin( particle.theta ) * particle.force;
     particle.vy = Math.cos( particle.theta ) * particle.force;
 
-    forestParticles.push( particle );
+    particleArray.push( particle );
 }
 
 // Function to add num particles at position x, y
@@ -130,11 +138,11 @@ function move(d) {
 // Function which displays and moves particles
 function redraw() {
     // Remove non-alive particles
-    forestParticles = forestParticles.filter(function(d) { return d.alive; });
+    particleArray = particleArray.filter(function(d) { return d.alive; }); //todo remove this?
 
     // Join data, keeping track of ids
     var circles = circle_group.selectAll("circle")
-                    .data(forestParticles, function(d) { return d.id; });
+                    .data(particleArray, function(d) { return d.id; });
 
     // Update circles
     circles.each(move)
@@ -167,6 +175,19 @@ function mousemove() {
 
 function clickForest() {
     console.log("click forest button");
+    colorArray = forestColors;
+    particleArray = forestParticles;
+    click();
+}
+
+function clickCity() {
+    console.log("click city button");
+    colorArray = cityColors;
+    particleArray = cityParticles;
+    click();
+}
+
+function click() {
     var x = get_random_number(MIN_X, MAX_X);
     var y = get_random_number(MIN_Y, MAX_Y);
     console.log("x: " + x + ", y: " + y);
