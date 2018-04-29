@@ -90,7 +90,7 @@ function move(d) {
     d.vy += Math.cos( d.theta ) * 0.5;
 
     d.radius *= d.age;
-    d.alive = d.radius > 0.5;
+    d.alive = d.radius > 1.5;
 }
 
 // Function which displays and moves particles
