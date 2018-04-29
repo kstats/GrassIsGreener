@@ -12,14 +12,12 @@ body {
 </style>
 <body>
     <svg>
-        <!--Source: http://blockbuilder.org/enjalot/1503463-->
         <defs>
-        <mask id="rekt">
-            <g id="rrr">
-                <rect  width=300 height=100 fill="#ccc"></rect> 
-            </g>
-        </mask>
+        <clipPath id="cut-off-bottom"> <!--src: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking-->
+                <rect x="0" y="0" width="200" height="100" />
+        </clipPath>
         </defs>
+        <circle cx="100" cy="100" r="100" clip-path="url(#cut-off-bottom)" />
     </svg>
 </body>
 <script>
