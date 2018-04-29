@@ -17,6 +17,9 @@ body {
         area showed enhanced immune functions, as evidenced by an increase in natural 
         killer (NK) cell activity and the levels of intracellular granulysin, perforin, and 
         granzymes A and B"[6]</p>
+    <div id="button-icons">
+        <img src="noun_182948.svg" width="100em" heigth="100em" style="background-color: thistle"</img>
+    </div>
     <svg id="sparkle-wrapper" height="100" width="100">
             <defs>
                 <clipPath id="clipPath" >
@@ -28,7 +31,7 @@ body {
             <g id="rectangle" fill="#ccc" style="clip-path: url(#clipPath);">
                 <rect width=300 height=100 fill="#ccc"></rect>
             </g>
-        </svg>
+    </svg>
 </body>
 <script>
 
@@ -40,7 +43,7 @@ body {
 var width = 960,
     height = 500;
 
-d3.select("#sparkle-wrapper").attr("width", width).attr("height", height);
+d3.select("#sparkle-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
 
 var svg = d3.select("#rectangle")
             .attr("width", width)
