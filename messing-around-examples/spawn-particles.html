@@ -19,7 +19,9 @@ body {
                             c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
                 </clipPath>
             </defs>
-            <rect  id="rectangle" width=300 height=100 fill="#ccc" style="clip-path: url(#clipPath);"></rect>
+            <g id="rectangle" fill="#ccc" style="clip-path: url(#clipPath);">
+                <rect width=300 height=100 fill="#ccc"></rect>
+            </g>
         </svg>
 </body>
 <script>
@@ -38,6 +40,7 @@ var svg = d3.select("#rectangle")
             .attr("width", width)
             .attr("height", height)
             .attr("pointer-events", "all")
+            .attr("transform", "scale(4)")
             .on("mousemove", mousemove);
 
 /*
@@ -72,7 +75,8 @@ function spawn(x, y) {
         drag: get_random_number( 0.2, 0.99 ),
         age: get_random_number( 0.92, 0.98 ),
         theta: get_random_number( 0,  2 * Math.PI ),
-        force: get_random_number( force.min, force.max )
+        //force: get_random_number( force.min, force.max )
+        force: 0
     };
 
     id += 1;
@@ -139,8 +143,8 @@ function redraw() {
 
 // Do something fun with this, e.g. add particles on mousemove
 function mousemove() {
-    console.log("mousemove...");
     var point = d3.mouse(this);
+    console.log("mousemove...: point:" + point);
     add_particles(point[0], point[1], 2);
 }
 
