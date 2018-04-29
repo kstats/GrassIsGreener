@@ -18,7 +18,7 @@ body {
         killer (NK) cell activity and the levels of intracellular granulysin, perforin, and 
         granzymes A and B"[6]</p>
     <div id="button-icons">
-        <img src="noun_182948.svg" width="100em" heigth="100em" style="background-color: thistle"</img>
+        <img id="forest-image" src="noun_182948.svg" width="100em" heigth="100em" style="background-color:green"</img>
     </div>
     <svg id="sparkle-wrapper" height="100" width="100">
             <defs>
@@ -41,7 +41,11 @@ body {
  */
 
 var width = 960,
-    height = 500;
+    height = 500,
+    MAX_X = 61,
+    MIN_X = 39,
+    MAX_Y = 80,
+    MIN_Y = 19;
 
 d3.select("#sparkle-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
 
@@ -51,6 +55,9 @@ var svg = d3.select("#rectangle")
             .attr("pointer-events", "all")
             .attr("transform", "scale(5)")
             .on("mousemove", mousemove);
+
+d3.select("#forest-image")
+  .on("click", clickForest);
 
 /*
  * Particle handling functions and variable start here
@@ -155,6 +162,14 @@ function mousemove() {
     var point = d3.mouse(this);
     console.log("mousemove...: point:" + point);
     add_particles(point[0], point[1], 2);
+}
+
+function clickForest() {
+    console.log("click forest button");
+    var x = get_random_number(MIN_X, MAX_X);
+    var y = get_random_number(MIN_Y, MAX_Y);
+    console.log("x: " + x + ", y: " + y);
+    add_particles(x, y, 2);
 }
 
 // This is necessary to update animation
