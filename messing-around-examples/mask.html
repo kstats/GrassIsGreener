@@ -64,6 +64,7 @@
                     .attr("height", 100)
                     .attr("mask", "url(#" + name + "iconmask)")
                     .attr("fill", color)
+                    .attr("transform", "scale(2)")
             }
 
             //add a row of use elements which point to our masked element
@@ -78,8 +79,10 @@
                     .attr("transform", function(d,i) {
                            return "translate(" + [x + 50 * i, y] + ")"
                     })
+                    .on("ontouchstart" in document ? "touchmove" : "mousemove", particleTwo);
             }
 
+            // animation code
             var width = Math.max(960, innerWidth),
                 height = Math.max(500, innerHeight);
 
@@ -91,9 +94,24 @@
                 .attr("width", width)
                 .attr("height", height);
 
+            svg.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .on("ontouchstart" in document ? "touchmove" : "mousemove", particle);
+
             
-            make_icon("man.svg", "man", "dark grey")
-            make_row("a", "man", 14, 220, 20)
+            function particle() {
+                console.log("inside particle function");
+            }
+
+            function particleTwo() {
+                console.log("inside particleTWo function");
+            }
+
+
+            
+            make_icon("man.svg", "man", "blue")
+            make_row("a", "man", 1, 220, 20)
         </script>
     </body>
 </html>
