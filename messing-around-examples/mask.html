@@ -32,6 +32,9 @@
             //Make a mask from an external svg element, then mask a rectangle with it
             function make_icon(url, name, color)
             {
+                console.log("url: " + url)
+                console.log("name: " + name)
+                console.log("color: " + color)
                 defs = d3.select("defs")
                 d3.html(url, function(data) {
                     console.log("data", data)
