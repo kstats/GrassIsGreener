@@ -53,7 +53,7 @@ var circle_group = svg.append("g")
 
 var id = 0, // to keep track of each particle
     forestColors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624', '#234426', '#7CFF89'],
-    particles = [];
+    forestParticles = [];
 
 var circle_size = { "min" : 8 * width/2000, "max" :32 * width/2000 },
     force = { "min" : 6 * width/2000, "max" : 10 * width/2000 };
@@ -85,7 +85,7 @@ function spawn(x, y) {
     particle.vx = Math.sin( particle.theta ) * particle.force;
     particle.vy = Math.cos( particle.theta ) * particle.force;
 
-    particles.push( particle );
+    forestParticles.push( particle );
 }
 
 // Function to add num particles at position x, y
@@ -114,11 +114,11 @@ function move(d) {
 // Function which displays and moves particles
 function redraw() {
     // Remove non-alive particles
-    particles = particles.filter(function(d) { return d.alive; });
+    forestParticles = forestParticles.filter(function(d) { return d.alive; });
 
     // Join data, keeping track of ids
     var circles = circle_group.selectAll("circle")
-                    .data(particles, function(d) { return d.id; });
+                    .data(forestParticles, function(d) { return d.id; });
 
     // Update circles
     circles.each(move)
