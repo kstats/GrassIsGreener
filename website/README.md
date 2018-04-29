@@ -18,11 +18,15 @@
 
 ## Download and Installation
 
+### Boostrap
 To begin using this template, choose one of the following options to get started:
 * [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/creative/)
 * Install via npm: `npm i startbootstrap-creative`
 * Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-creative.git`
 * [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-creative)
+
+### Other
+You'll also need to [install gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) if you don't already have it: ```npm install --global gulp-cli```
 
 ## Usage
 
