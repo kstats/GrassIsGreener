@@ -52,7 +52,7 @@ var circle_group = svg.append("g")
                     .style("isolation", "isolate");
 
 var id = 0, // to keep track of each particle
-    colors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624', '#234426', '#7CFF89'],
+    forestColors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624', '#234426', '#7CFF89'],
     particles = [];
 
 var circle_size = { "min" : 8 * width/2000, "max" :32 * width/2000 },
@@ -72,7 +72,7 @@ function spawn(x, y) {
         alive: true,
         radius: get_random_number( circle_size.min, circle_size.max ),
         wander: get_random_number( 1, 1.5 ),
-        color: colors[ Math.round( get_random_number(0, colors.length-1)) ],
+        color: forestColors[ Math.round( get_random_number(0, forestColors.length-1)) ],
         drag: get_random_number( 0.2, 0.99 ),
         age: get_random_number( 0.92, 0.98 ),
         theta: get_random_number( 0,  2 * Math.PI ),
