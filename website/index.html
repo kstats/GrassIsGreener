@@ -24,6 +24,8 @@
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
 
+    <link href="css/custom.css" rel="stylesheet">
+
   </head>
 
   <body id="page-top">
@@ -263,11 +265,115 @@
       Why People Don't Go Outside
     </section>
 
-    <section>
-      Community Benefits
+    <section id="Community">
+      <div class="continer">
+        Community Benefits
+        <img id='park' class="img-fluid" src="img/community/park.png" alt="">
+        <img id='water_pic' class="img-water" src="img/community/water.png" style="visibility: hidden;"alt="">
+        <img id='comm_pic' class="img-comm" src="img/community/comm.png" style="visibility: hidden;"alt="">
+        <img id='co2_pic' class="img-co2" src="img/community/co2.png" style="visibility: hidden;"alt="">
+        <img id='health_pic' class="img-health" src="img/community/health.png" style="visibility: hidden;"alt="">
+
+
+      </div>
+      <div id="intro">
+        This is a test intro passage
+      </div>
+      <div id="water">
+        This is a fun fact about water
+      </div>
+      <div id="comm">
+        This is a fun fact about comm
+      </div>
+      <div id="co2">
+        This is a fun fact about co2
+      </div>
+      <div id="health">
+        This is a fun fact about health
+      </div>
+      <p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p><p>Test</p>
+      
     </section>
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+
+
+
+     <!-- Waypoints for scrollytelling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
+
+    <script>
+      //waypoints scroll constructor
+      function scroll(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+             direction == 'down' //? func1() : func2();
+             console.log("got it 1...");
+             document.getElementById("water_pic").style = "visibility=visible";
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new scroll('water', '1%');//#, water, intro);
+
+
+
+      function scroll2(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+             direction == 'down' //? func1() : func2();
+             console.log("got it 2...");
+             document.getElementById("comm_pic").style = "visibility=visible";
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new scroll2('comm', '1%');//#, water, intro);
+
+
+
+
+      function scroll3(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+             direction == 'down' //? func1() : func2();
+             console.log("got it 3...");
+             document.getElementById("co2_pic").style = "visibility=visible";
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new scroll3('co2', '1%');//#, water, intro);
+
+
+
+
+      function scroll4(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+             direction == 'down' //? func1() : func2();
+             console.log("got it 4...");
+             document.getElementById("health_pic").style = "visibility=visible";
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new scroll4('health', '1%');//#, water, intro);
+    </script>
+
+    <!-- Bootstrap core JavaScript <script src="vendor/jquery/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
@@ -277,6 +383,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
+
+   
+
 
   </body>
 

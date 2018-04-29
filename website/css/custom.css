@@ -1,0 +1,33 @@
+
+.img-water{
+	position: absolute; 
+	left: 500px; 
+	z-index: 2;
+	height:100px;
+	width:100px;
+}
+
+.img-comm{
+	position: absolute; 
+	left: 5px; 
+	z-index: 2;
+	height:100px;
+	width:100px;
+}
+
+.img-health{
+	position: absolute; 
+	left:250px; 
+	z-index: 2;
+	height:100px;
+	width:100px;
+}
+
+.img-co2{
+	position: absolute; 
+	left: 100px; 
+	down: 100px;
+	z-index: 2;
+	height:100px;
+	width:100px;
+}
