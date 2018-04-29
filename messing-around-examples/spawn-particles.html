@@ -43,10 +43,10 @@ body {
 
 var width = 960,
     height = 500,
-    MAX_X = 61,
-    MIN_X = 39,
-    MAX_Y = 80,
-    MIN_Y = 19;
+    MAX_X = 58,
+    MIN_X = 44,
+    MAX_Y = 75,
+    MIN_Y = 25;
 
 d3.select("#sparkle-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
 
@@ -191,7 +191,7 @@ function click() {
     var x = get_random_number(MIN_X, MAX_X);
     var y = get_random_number(MIN_Y, MAX_Y);
     console.log("x: " + x + ", y: " + y);
-    add_particles(x, y, 2);
+    add_particles(x, y, 5);
 }
 
 // This is necessary to update animation
