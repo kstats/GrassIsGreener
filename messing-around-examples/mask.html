@@ -51,7 +51,6 @@
                     //we make a mask object
                     mask = defs.append("svg:mask")
                         .attr("id", name + "iconmask")
-                        .attr("z-index", 1)
                     icon.id = name + "icon"
                     //this is where the icon gets inserted into the DOM
                     mask.node().appendChild(icon)
@@ -65,6 +64,7 @@
                     .attr("height", 100)
                     .attr("mask", "url(#" + name + "iconmask)")
                     .attr("fill", color)
+                    .style("opacity", 0.5)
                     .attr("transform", "scale(4)")
                     .on("ontouchstart" in document ? "touchmove" : "mousemove", particleTwo);
             }
@@ -109,12 +109,13 @@
             function particleTwo() {
                 console.log("inside particleTwo function");
                 var m = d3.mouse(this);
+                console.log("mouse: " + m);
 
                 svg.insert("circle", "rect")
                     .attr("cx", m[0])
-                    .attr("cy", m[1])
+                    .attr("cy", -m[1])
                     .attr("r", 1e-6)
-                    .attr("z-index", 100)
+                    .attr("z-index", 5)
                     .style("stroke", d3.hsl((i = (i + 1) % 360), 1, .5))
                     .style("stroke-opacity", 1)
                     .transition()
