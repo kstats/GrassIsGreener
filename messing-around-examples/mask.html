@@ -3,6 +3,9 @@
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     </head>
     <body>
+        <div id="chart-holder"> testing text
+            </div>
+
         <svg>
             <defs>
             
@@ -77,9 +80,19 @@
                     })
             }
 
+            var width = Math.max(960, innerWidth),
+                height = Math.max(500, innerHeight);
+
+            var i = 0;
+
+            var div = d3.select("#chart-holder")
+            console.log(div.text());
+            var svg = d3.select("#chart-holder").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
             
             make_icon("man.svg", "man", "dark grey")
-           
             make_row("a", "man", 14, 220, 20)
         </script>
     </body>
