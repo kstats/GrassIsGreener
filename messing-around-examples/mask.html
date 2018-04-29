@@ -51,6 +51,7 @@
                     //we make a mask object
                     mask = defs.append("svg:mask")
                         .attr("id", name + "iconmask")
+                        .attr("z-index", 1)
                     icon.id = name + "icon"
                     //this is where the icon gets inserted into the DOM
                     mask.node().appendChild(icon)
@@ -95,10 +96,10 @@
                 .attr("width", width)
                 .attr("height", height);
 
-            svg.append("rect")
-                .attr("width", width)
-                .attr("height", height)
-                .on("ontouchstart" in document ? "touchmove" : "mousemove", particle);
+            // svg.append("rect")
+            //     .attr("width", width)
+            //     .attr("height", height)
+            //     .on("ontouchstart" in document ? "touchmove" : "mousemove", particle);
 
             
             function particle() {
@@ -113,6 +114,7 @@
                     .attr("cx", m[0])
                     .attr("cy", m[1])
                     .attr("r", 1e-6)
+                    .attr("z-index", 100)
                     .style("stroke", d3.hsl((i = (i + 1) % 360), 1, .5))
                     .style("stroke-opacity", 1)
                     .transition()
