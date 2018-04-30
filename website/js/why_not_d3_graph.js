@@ -205,14 +205,13 @@ $(function() {
     chart.style('position', 'fixed');
     chart.style('top', '100px');
     chart.style('left', $('#whyNotChart').position() + 'px');
-    // TODO: Do something to smooth snap-left with $("#whyNotChart").position()
-    $("#whyNotChartFillerStart").css('position', 'static');
+    $("#whyNotChartFillerStart").css('height', '600px');
   }
 
   function makeStaticStart() {
     console.log('makeStaticStart');
     chart.style('position', 'static');
-    $("#whyNotChartFillerStart").css('position', 'fixed');
+    $("#whyNotChartFillerStart").css('height', '0px');
   }
 
   function makeFixedEnd() {
@@ -225,8 +224,8 @@ $(function() {
     chart.style('top', '100px');
     chart.style('left', $('#whyNotChart').position() + 'px');
 
-    $("#whyNotChart").insertBefore($("#whyNotChartFillerStart"));
-    $("#whyNotChartFillerEnd").css('position', 'static');
+    $("#whyNotChart").insertAfter($("#whyNotChartFillerStart"));
+    $("#whyNotChartFillerEnd").css('height', '300px');
   }
 
   function makeStaticEnd() {
@@ -236,8 +235,8 @@ $(function() {
       .attr('height', SMALL_HEIGHT)
       .attr('width', SMALL_WIDTH);
     chart.style('position', 'static');
-    $("#whyNotChart").insertBefore($("#whyNotChartFillerEnd"));
-    $("#whyNotChartFillerEnd").css('position', 'fixed');
+    $("#whyNotChart").insertAfter($("#whyNotChartFillerEnd"));
+    $("#whyNotChartFillerEnd").css('height', '0px');
   }
 
   function setWaypoint(triggerElmt, offset, downFunc, upFunc) {
@@ -262,9 +261,9 @@ $(function() {
 
   setWaypoint('whyNot', '100%', () => {}, destroyBar);
   setWaypoint('whyNot', '60%', createLargeBar, () => {});
-  setWaypoint('whyNotChart', '100px', smallBar, largeBar);
-  setWaypoint('whyNotChart', '100px', makeFixedStart, makeStaticStart);
-  setWaypoint('whyNotChart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
+  setWaypoint('whyNotChartFillerStart', '100px', smallBar, largeBar);
+  setWaypoint('whyNotChartFillerStart', '100px', makeFixedStart, makeStaticStart);
+  setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   // TODO: Tableau plug-in messes up waypoint here :'( May need to wait until Tableau
   // is loaded to do these, or give it a fixed height to start.
 
@@ -283,6 +282,6 @@ $(function() {
     );
     prevReasons = currReasons;
   }
-  setWaypoint('whyNotChartFillerEnd', '200px', updateReasonState([], prevReasons), updateReasonState(prevReasons))
-  setWaypoint('whyNotChartFillerEnd', '200px', makeStaticEnd, makeFixedEnd);
+  setWaypoint('whyNotChartFillerEnd', '100px', updateReasonState([], prevReasons), updateReasonState(prevReasons))
+  setWaypoint('whyNotChartFillerEnd', '100px', makeStaticEnd, makeFixedEnd);
 });
