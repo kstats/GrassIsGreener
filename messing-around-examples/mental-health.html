@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<style>
+
+body {
+    background: #262626
+}
+
+</style>
+<body>
+    <p>“experiences made in successful programs can increase self-efficacy, mindfulness 
+        and subjective well-being. Furthermore, programs may reduce feelings of time 
+        pressure and mental stress amongst participants"[4]</p>
+    <p>
+        "participants scored higher in life satisfaction, happiness, mindfulness, and 
+        self-efficacy and lower in perceived stress after having spent eight days in 
+        the wilderness"[4]
+    </p>
+    <svg id="mind-wrapper" height="100" width="100">
+            <defs>
+                <clipPath id="clipPathMind" >
+                        <circle class="st0" cx="50" cy="25.5" r="6.6"/>
+                        <path class="st0" d="M60.9,39.7v12.8c0,2.8-1.8,5.3-4.4,6.3v17.9c0,2.4-1.9,4.4-4.4,4.4h-4.4c-2.4,0-4.3-2-4.4-4.4V58.7
+                            c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
+                </clipPath>
+            </defs>
+            <g id="rectangleMind" fill="#ccc" style="clip-path: url(#clipPathMind);">
+                <rect width=300 height=100 fill="#ccc"></rect>
+            </g>
+    </svg>
+</body>
+
+<script>
+    var width = 960,
+        height = 500;
+
+    d3.select("#mind-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
+
+    var svg = d3.select("#rectangleMind")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("pointer-events", "all")
+            .attr("transform", "scale(5)")
+            .on("mousemove", mousemove);
+
+    // Do something fun with this, e.g. add particles on mousemove
+    function mousemove() {
+        var point = d3.mouse(this);
+        console.log("mousemove...: point:" + point);
+    }
+
+</script>
