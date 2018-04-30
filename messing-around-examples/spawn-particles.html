@@ -32,17 +32,20 @@ body {
                         c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
             </clipPath>
         </defs>
-        <g id="rectangle" fill="#ccc" style="clip-path: url(#clipPath);">
+        <g id="personFill" fill="#ccc" style="clip-path: url(#clipPath);">
             <rect width=300 height=100 fill="#ccc"></rect>       
         </g>
+        <g id="rectangle">
+            <svg id="followPath" version="1.1" viewBox="0 0 792 1224" style="enable-background:new 0 0 792 1224;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill:none;stroke:#231F20;stroke-miterlimit:10;}
+                    </style>
+                    <path id="nodedPath" class="st0" d="M92.6,616.4c31,0,61.9,0,92.9,0c56.1,0,112.2,0,168.3,0c48.2,0,96.3,0,144.5,0
+                    c69.1,0,138.3,0,207.4,0"/>
+            </svg>
+        </g>
     </svg>
-    
-    <svg id="followPath" version="1.1" viewBox="0 0 792 1224" style="enable-background:new 0 0 792 1224;" xml:space="preserve">
-        <style type="text/css">
-            .st0{fill:none;stroke:#231F20;stroke-miterlimit:10;}
-        </style>
-        <line id="straight-path" class="st0" x1="98.2" y1="453.4" x2="663" y2="453.4"/>
-    </svg>
+
 </body>
 <script>
 
@@ -63,7 +66,7 @@ var svg = d3.select("#sparkle-wrapper")
             .attr("height", height); // set size of background rectangle
 
 
-var person = d3.select("#rectangle")
+var person = d3.select("#personFill")
             .attr("width", width)
             .attr("height", height)
             .attr("pointer-events", "all")
@@ -72,12 +75,14 @@ var person = d3.select("#rectangle")
 
 var followPathSvg = d3.select("#followPath");
 
-var path = followPathSvg.select("path#straight-path"),
-    personStartPoint = (path.x2 - path.x1) + "," + (path.y2 - path.y1);
-    leftNode = path.x1 + "," + path.y1;
-    rightNode = path.x2 + "," + path.y2;
+var path = followPathSvg.select("path#nodedPath"),
+    personStartPoint = pathNPoint(path, 3);
+    leftNode = pathNPoint(path, 1);
+    rightNode = pathNPoint(path, 5);
 
-var g = svg.append("g");
+console.log("start: " + personStartPoint + "lef: " + leftNode + "right: " + rightNode);
+
+var g = d3.select("#rectangle");
 
 var forestImg = g.append("svg:image")
     .attr("xlink:href", "noun_182948.svg") //forest image
@@ -224,6 +229,14 @@ function click() {
     console.log("x: " + x + ", y: " + y);
     add_particles(x, y, 5);
 }
+
+//Get path start point for placing marker
+function pathNPoint(path, n) { // I shouldn't do this more than once....todo fix this.
+    var d = path.attr("d"),
+    splitD = d.split(" ");
+    console.log(" pathNPoint, splitD: " + splitD);
+    return splitD[n].split(",");
+  }
 
 // This is necessary to update animation
 d3.timer(function() {
