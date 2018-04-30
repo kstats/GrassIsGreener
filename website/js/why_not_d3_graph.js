@@ -161,7 +161,7 @@ $(function() {
       .transition()
         .delay(WHY_NOT_TRANSITION_MS)
         .attr('opacity', 1);
-    
+
     // Update rectangles
     rect.transition('updateChartSize')
       .duration(WHY_NOT_TRANSITION_MS)
@@ -175,7 +175,7 @@ $(function() {
     return function() {
       console.log('updateReasonState');
       d3.select('#whyNotChart').selectAll('g').each(
-        function(d) { 
+        function(d) {
           if (highlightReasons.indexOf(d.reason) > -1) {
             d.state = 'highlight';
           } else if (disableReasons.indexOf(d.reason) > -1) {
