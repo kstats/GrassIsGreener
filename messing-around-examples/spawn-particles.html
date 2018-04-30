@@ -60,7 +60,7 @@ var svg = d3.select("#sparkle-wrapper")
 
 var person = d3.select("#personFill")
             .attr("pointer-events", "all")
-            .attr("transform", "scale(5)") // add a transform for translation to move it.
+            .attr("transform", "scale(4), translate(130, 26)") // add a transform for translation to move it.
             .attr("x", width)
             .attr("y", height/2)
             .on("mousemove", mousemove);
