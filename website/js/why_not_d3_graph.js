@@ -1,21 +1,23 @@
 'use strict';
 const WHY_NOT_DATA = "reason,svg_name,percent\n\
 Family responsibilities,family,21\n\
-Equipment too expensive,family,18\n\
-No friends,family,17\n\
-Lacking skill,family,16\n\
-Physical disability,family,14\n\
-Poor health,family,11\n\
-Location too expensive,family,10\n\
-Other recreation,family,10\n\
-Too far away,family,10\n\
-Not enough info,family,7\n\
-Cannot reach venues,family,5\n\
-Too crowded,family,4\n\
-Family with physical disability,family,4\n\
-Afraid of others,family,3\n\
-Other,family,15\n\
+Equipment too expensive,money,18\n\
+No friends,alone,17\n\
+Lacking skill,accident,16\n\
+Physical disability,wheelchair,14\n\
+Poor health,sick,11\n\
+Location too expensive,money,10\n\
+Other recreation,videogame,10\n\
+Too far away,far,10\n\
+Not enough info,question,7\n\
+Cannot reach venues,far,5\n\
+Too crowded,crowd,4\n\
+Family with physical disability,wheelchair,4\n\
+Afraid of others,criminal,3\n\
+Other,question,15\n\
 ";
+
+const WHY_NOT_TRANSITION_MS = 500;
 
 $(function() {
   const LARGE_WIDTH = 800,
@@ -32,6 +34,10 @@ $(function() {
   let data = d3.csvParse(WHY_NOT_DATA);
   let max_val = d3.max(data, function(d) { return parseFloat(d.percent) })
   let num_rows = data.length;
+
+  for (var i = 0; i < data.length; i++) {
+    data[i].state = 'default';
+  }
 
   let bar = chart.selectAll('g')
     .data(data)
@@ -60,7 +66,12 @@ $(function() {
       .attr('x', 0)
       .attr('alignment-baseline', 'middle')
       .attr('font-size', 12)
-      .text(function(d) { return d.reason });
+      .text(function(d) { return d.reason })
+      .attr('opacity', 0)
+      .transition()
+        .delay(function(d, i) { return 100 * i})
+        .duration(WHY_NOT_TRANSITION_MS)
+        .attr('opacity', 1);
 
     // Add bars of bar chart
     rect
@@ -69,9 +80,9 @@ $(function() {
       .attr('x', LABEL_WIDTH)
       .attr('width', 0)
       .attr('opacity', .6)
-      .transition()
-        .delay(function(d, i) { return 100 * i})
-        .duration(200)
+      .transition('updateChartSize')
+        .delay(function(d, i) { return 100 * (i + 1)})
+        .duration(WHY_NOT_TRANSITION_MS)
         .attr('width', function(d) { return xScale(parseFloat(d.percent)) })
 
     // Add percent labels
@@ -82,6 +93,7 @@ $(function() {
       .attr('text-anchor', 'end')
       .attr('fill', 'white')
       .attr('font-size', 12)
+      .attr('opacity', 1)
       .text(function(d) { return d.percent + "%" });
 
     icon
@@ -89,44 +101,55 @@ $(function() {
       .attr('opacity', 0);
   }
 
+  function destroyBar() {
+    console.log('destroyBar');
+
+    reasonLabel.attr('opacity', 0);
+    rect.attr('width', 0);
+    percentLabel.attr('opacity', 0);
+    icon.attr('opacity', 0);
+  }
+
   function largeBar() {
     console.log('largeBar');
-    // chart.attr('height', LARGE_HEIGHT);
-    // chart.attr('width', LARGE_WIDTH);
 
     xScale = d3.scaleLinear().domain([0, max_val]).range([0, LARGE_WIDTH - LABEL_WIDTH]);
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, LARGE_HEIGHT]);
     barHeight = LARGE_HEIGHT/num_rows - 10;
 
     reasonLabel.transition()
+      .duration(WHY_NOT_TRANSITION_MS)
       .attr('opacity', 1)
-      .delay(200);
+      .delay(WHY_NOT_TRANSITION_MS);
     percentLabel.transition()
+      .duration(WHY_NOT_TRANSITION_MS)
       .attr('opacity', 1)
-      .delay(200);
+      .delay(WHY_NOT_TRANSITION_MS);
     icon.transition()
+      .duration(0)
       .attr('opacity', 0);
 
-    rect.transition()
+    rect.transition('updateChartSize')
+      .duration(WHY_NOT_TRANSITION_MS)
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
       .attr('x', LABEL_WIDTH)
-      .attr('width', function(d) { return xScale(parseFloat(d.percent)) })
-      .duration(200)
+      .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
   }
 
-  function smallBar(highlightReasons = [], disableReasons = [], enableReasons = []) {
+  function smallBar() {
     console.log('smallBar');
 
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, SMALL_HEIGHT]);
     barHeight = SMALL_HEIGHT/num_rows - 5;
     xScale = d3.scaleLinear().domain([0, max_val]).range([0, SMALL_WIDTH - (barHeight + 5)]);
 
-    // TODO: Also move them as they disappear, probably?
     // Hide labels
     reasonLabel.transition()
+      .duration(0)
       .attr('opacity', 0);
     percentLabel.transition()
+      .duration(0)
       .attr('opacity', 0);
 
     // Resize and place icons appropriately.
@@ -136,32 +159,52 @@ $(function() {
       .attr('x', 0)
       .attr('width', barHeight)
       .transition()
+        .delay(WHY_NOT_TRANSITION_MS)
         .attr('opacity', 1);
-    
+
     // Update rectangles
-    rect.transition()
+    rect.transition('updateChartSize')
+      .duration(WHY_NOT_TRANSITION_MS)
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
       .attr('x', barHeight + 5)
-      .attr('width', function(d) { return xScale(parseFloat(d.percent)) })
-      .attr('opacity', function(d) {
-        if (highlightReasons.indexOf(d.reason) > -1) {
-          return 1;
-        } else if (disableReasons.indexOf(d.reason) > -1) {
-          return .2;
-        } else if (enableReasons.indexOf(d.reason) > -1) {
-          return .6;
-        } else {
-          return this.getAttribute('opacity');
+      .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
+  }
+
+  function updateReasonState(highlightReasons = [], disableReasons = [], enableReasons = []) {
+    return function() {
+      console.log('updateReasonState');
+      d3.select('#whyNotChart').selectAll('g').each(
+        function(d) {
+          if (highlightReasons.indexOf(d.reason) > -1) {
+            d.state = 'highlight';
+          } else if (disableReasons.indexOf(d.reason) > -1) {
+            d.state = 'disable';
+          } else if (enableReasons.indexOf(d.reason) > -1) {
+            d.state = 'default';
+          }
         }
-      });
+      );
+
+      rect.transition('updateReasonState')
+        .duration(WHY_NOT_TRANSITION_MS)
+        .attr('opacity', function(d) {
+          if (d.state === 'highlight') {
+            return 1
+          } else if (d.state === 'disable') {
+            return .2
+          } else {
+            return .6
+          }
+        });
+    }
   }
 
   function makeFixedStart() {
     console.log('makeFixedStart');
     chart.style('position', 'fixed');
     chart.style('top', '100px');
-    chart.style('left', '0px');
+    chart.style('left', $('#whyNotChart').position() + 'px');
     // TODO: Do something to smooth snap-left with $("#whyNotChart").position()
     $("#whyNotChartFillerStart").css('position', 'static');
   }
@@ -174,9 +217,13 @@ $(function() {
 
   function makeFixedEnd() {
     console.log('makeFixedEnd');
+
+    chart
+      .attr('height', LARGE_HEIGHT)
+      .attr('width', LARGE_WIDTH + LABEL_WIDTH);
     chart.style('position', 'fixed');
     chart.style('top', '100px');
-    chart.style('left', '0px');
+    chart.style('left', $('#whyNotChart').position() + 'px');
 
     $("#whyNotChart").insertBefore($("#whyNotChartFillerStart"));
     $("#whyNotChartFillerEnd").css('position', 'static');
@@ -184,9 +231,12 @@ $(function() {
 
   function makeStaticEnd() {
     console.log('makeStaticEnd');
+
+    chart
+      .attr('height', SMALL_HEIGHT)
+      .attr('width', SMALL_WIDTH);
     chart.style('position', 'static');
     $("#whyNotChart").insertBefore($("#whyNotChartFillerEnd"));
-    // TODO: Do something to smooth snap-left with $("#whyNotChart").position()
     $("#whyNotChartFillerEnd").css('position', 'fixed');
   }
 
@@ -194,18 +244,45 @@ $(function() {
     return new Waypoint({
       element: document.getElementById(triggerElmt),
       handler: function(direction) {
+        console.log('Triggering for ', triggerElmt, direction);
         direction == 'down' ? downFunc() : upFunc();
       },
       offset: offset
     });
   };
 
-  // TODO: Destroy the bars if scroll is above this.
-  setWaypoint('whyNot', '80%', createLargeBar, () => {});
-  setWaypoint('whyNot1', '80%', () => { smallBar(['Family responsibilities']) }, largeBar);
-  setWaypoint('whyNot2', '80%', () => { smallBar(['No friends'], ['Family responsibilities']) }, () => { smallBar(['Family responsibilities'], [], ['No friends']) });
-  setWaypoint('whyNot3', '80%', () => { smallBar(['Equipment too expensive', 'Location too expensive'], ['No friends']) }, () => { smallBar(['No friends'], [], ['Equipment too expensive', 'Location too expensive']) });
-  setWaypoint('whyNot4', '80%', () => { smallBar(['Too crowded'], ['Equipment too expensive', 'Location too expensive']) }, () => { smallBar(['Equipment too expensive', 'Location too expensive'], [], ['Too crowded']) });
+  let navigationTransitions = [
+    {'triggerElmt': 'games', 'relevantReasons': ['Other recreation']},
+    {'triggerElmt': 'family', 'relevantReasons': ['Family responsibilities']},
+    {'triggerElmt': 'expensive', 'relevantReasons': ['Equipment too expensive', 'Location too expensive']},
+    {'triggerElmt': 'alone', 'relevantReasons': ['No friends', 'Not enough info']},
+    {'triggerElmt': 'disability', 'relevantReasons': ['Physical disability', 'Family with physical disability']},
+    {'triggerElmt': 'far', 'relevantReasons': ['Too far away', 'Cannot reach venues']},
+  ]
+
+  setWaypoint('whyNot', '100%', () => {}, destroyBar);
+  setWaypoint('whyNot', '60%', createLargeBar, () => {});
+  setWaypoint('whyNotChart', '100px', smallBar, largeBar);
   setWaypoint('whyNotChart', '100px', makeFixedStart, makeStaticStart);
-  setWaypoint('whyNotChartFillerEnd', '100px', makeStaticEnd, makeFixedEnd);
+  setWaypoint('whyNotChart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
+  // TODO: Tableau plug-in messes up waypoint here :'( May need to wait until Tableau
+  // is loaded to do these, or give it a fixed height to start.
+
+  // Set up appropriate highlighting
+  let currReasons = []
+  let prevReasons = []
+  for (var i = 0; i < navigationTransitions.length; i++) {
+    currReasons = navigationTransitions[i].relevantReasons;
+    setWaypoint(
+      navigationTransitions[i].triggerElmt,
+      '80%',
+      // Highlight the new category and fade out the previous one.
+      updateReasonState(currReasons, prevReasons),
+      // Highlight the previous category and return the new category to "to-be-processed"
+      updateReasonState(prevReasons, [], currReasons)
+    );
+    prevReasons = currReasons;
+  }
+  setWaypoint('whyNotChartFillerEnd', '200px', updateReasonState([], prevReasons), updateReasonState(prevReasons))
+  setWaypoint('whyNotChartFillerEnd', '200px', makeStaticEnd, makeFixedEnd);
 });
