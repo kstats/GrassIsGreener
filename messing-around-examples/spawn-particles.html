@@ -52,15 +52,18 @@ var width = 960,
     MAX_X = 55,
     MIN_X = 49,
     MAX_Y = 60,
-    MIN_Y = 30;
+    MIN_Y = 30,
+    curX = 130,
+    curY = 26;
 
 var svg = d3.select("#sparkle-wrapper")
             .attr("width", width)
             .attr("height", height); // set size of background rectangle
 
+
 var person = d3.select("#personFill")
             .attr("pointer-events", "all")
-            .attr("transform", "scale(4), translate(130, 26)") // add a transform for translation to move it.
+            .attr("transform", "scale(4), translate("+curX+"," +curY + ")") // add a transform for translation to move it.
             .attr("x", width)
             .attr("y", height/2)
             .on("mousemove", mousemove);
@@ -74,6 +77,7 @@ var forestImg = g.append("svg:image")
     .attr("height", imgSize)
     .attr("x", 0)
     .attr("y", height/2)
+    .on("click", clickForest)
 
 var cityImg = g.append("svg:image")
     .attr("xlink:href", "noun_1091790.svg") //city image
@@ -81,6 +85,7 @@ var cityImg = g.append("svg:image")
     .attr("height", imgSize)
     .attr("x", width - imgSize)
     .attr("y", height/2)
+    .on("click", clickCity)
 
 
 /*
@@ -197,21 +202,25 @@ function clickForest() {
     console.log("click forest button");
     colorArray = forestColors;
     particleArray = forestParticles;
-    click();
+    click(-5);
 }
 
 function clickCity() {
     console.log("click city button");
     colorArray = cityColors;
     particleArray = cityParticles;
-    click();
+    click(5);
 }
 
-function click() {
+function click(translateDelta) {
     var x = get_random_number(MIN_X, MAX_X);
     var y = get_random_number(MIN_Y, MAX_Y);
     console.log("x: " + x + ", y: " + y);
     add_particles(x, y, 5);
+    console.log("moving the person from" + curX + " to " + curX + translateDelta)
+    curX = curX + translateDelta
+    person.attr("transform", "scale(4), translate("+curX+", 25)")
+    
 }
 
 // This is necessary to update animation
