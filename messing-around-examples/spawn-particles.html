@@ -21,21 +21,27 @@ body {
         "A higher level of stress — as evidenced by an elevated serum cortisol level - was 
         observed in subjects exposed to the urban environment than in the forest group"
     </p>
-    <div id="button-icons">
-        <img id="forest-image" src="noun_182948.svg" width="100em" height="100em" style="background-color:green"</img>
-        <img id="city-image" src="noun_1091790.svg" width="100em" height="100em" style="background-color:lightcoral"</img>
+    <div id="pathAnimation">
+
     </div>
     <svg id="sparkle-wrapper" height="100" width="100">
-            <defs>
-                <clipPath id="clipPath" >
-                        <circle class="st0" cx="50" cy="25.5" r="6.6"/>
-                        <path class="st0" d="M60.9,39.7v12.8c0,2.8-1.8,5.3-4.4,6.3v17.9c0,2.4-1.9,4.4-4.4,4.4h-4.4c-2.4,0-4.3-2-4.4-4.4V58.7
-                            c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
-                </clipPath>
-            </defs>
-            <g id="rectangle" fill="#ccc" style="clip-path: url(#clipPath);">
-                <rect width=300 height=100 fill="#ccc"></rect>
-            </g>
+        <defs>
+            <clipPath id="clipPath" >
+                    <circle class="st0" cx="50" cy="25.5" r="6.6"/>
+                    <path class="st0" d="M60.9,39.7v12.8c0,2.8-1.8,5.3-4.4,6.3v17.9c0,2.4-1.9,4.4-4.4,4.4h-4.4c-2.4,0-4.3-2-4.4-4.4V58.7
+                        c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
+            </clipPath>
+        </defs>
+        <g id="rectangle" fill="#ccc" style="clip-path: url(#clipPath);">
+            <rect width=300 height=100 fill="#ccc"></rect>       
+        </g>
+    </svg>
+    
+    <svg id="followPath" version="1.1" viewBox="0 0 792 1224" style="enable-background:new 0 0 792 1224;" xml:space="preserve">
+        <style type="text/css">
+            .st0{fill:none;stroke:#231F20;stroke-miterlimit:10;}
+        </style>
+        <line id="straight-path" class="st0" x1="98.2" y1="453.4" x2="663" y2="453.4"/>
     </svg>
 </body>
 <script>
@@ -52,26 +58,47 @@ var width = 960,
     MAX_Y = 60,
     MIN_Y = 30;
 
-d3.select("#sparkle-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
+var svg = d3.select("#sparkle-wrapper")
+            .attr("width", width)
+            .attr("height", height); // set size of background rectangle
 
-var svg = d3.select("#rectangle")
+
+var person = d3.select("#rectangle")
             .attr("width", width)
             .attr("height", height)
             .attr("pointer-events", "all")
             .attr("transform", "scale(5)")
             .on("mousemove", mousemove);
 
-d3.select("#forest-image")
-  .on("click", clickForest);
+var followPathSvg = d3.select("#followPath");
 
-d3.select("#city-image")
-  .on("click", clickCity);
+var path = followPathSvg.select("path#straight-path"),
+    personStartPoint = (path.x2 - path.x1) + "," + (path.y2 - path.y1);
+    leftNode = path.x1 + "," + path.y1;
+    rightNode = path.x2 + "," + path.y2;
+
+var g = svg.append("g");
+
+var forestImg = g.append("svg:image")
+    .attr("xlink:href", "noun_182948.svg") //forest image
+    .attr("width", 200)
+    .attr("height", 200)
+    .attr("x", path.x2)
+    .attr("y",path.y2);
+
+var cityImg = g.append("svg:image")
+    .attr("xlink:href", "noun_1091790.svg") //city image
+    .attr("width", 200)
+    .attr("height", 200)
+    .attr("x", path.x1)
+    .attr("y",path.y1);
+
 
 /*
  * Particle handling functions and variable start here
  */
 
-var circle_group = svg.append("g")
+var circle_group = person.append("g")
                     .style("isolation", "isolate");
 
 var id = 0, // to keep track of each particle
