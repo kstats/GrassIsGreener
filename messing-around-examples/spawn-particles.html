@@ -64,19 +64,26 @@ var person = d3.select("#personFill")
             .attr("height", height)
             .attr("pointer-events", "all")
             .attr("transform", "scale(5)")
+            .attr("x", width/2)
+            .attr("y", height/2)
             .on("mousemove", mousemove);
 
-var g = d3.select("#rectangle");
+var g = d3.select("#rectangle")
 
+var imgSize = 200;
 var forestImg = g.append("svg:image")
     .attr("xlink:href", "noun_182948.svg") //forest image
-    .attr("width", 200)
-    .attr("height", 200);
+    .attr("width", imgSize)
+    .attr("height", imgSize)
+    .attr("x", 0)
+    .attr("y", height/2)
 
 var cityImg = g.append("svg:image")
     .attr("xlink:href", "noun_1091790.svg") //city image
-    .attr("width", 200)
-    .attr("height", 200);
+    .attr("width", imgSize)
+    .attr("height", imgSize)
+    .attr("x", width - imgSize)
+    .attr("y", height/2)
 
 
 /*
