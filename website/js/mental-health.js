@@ -3,7 +3,7 @@ var width = 960,
     height = 250,
     scaleFactor = 3.5;
 
-    d3.select("#mind-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
+    var wrapper = d3.select("#mind-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
 
     var svg = d3.select("#rectangleMind")
             .attr("width", width)
@@ -139,7 +139,23 @@ var width = 960,
 				.attr("d", "M" + (width/2) + "," + (height/2) + hexagonPath)
 				.style("stroke", "#F2F2F2")
 				.style("stroke-width", "4px")
-				.style("fill", "none");
+                .style("fill", "none");
+                
+            wrapper.append("path")
+                .attr("class", "hexagon")
+                .attr("d", "M" + (width/5) + "," + (height/5) + hexagonPath)
+				.style("stroke", "#F2F2F2")
+				.style("stroke-width", "8px")
+                .style("fill", "none")
+                .attr("transform", "scale(0.3), translate(300, 200)")
+            
+            wrapper.append("path")
+                .attr("class", "hexagon")
+                .attr("d", "M" + (width/5) + "," + (height/5) + hexagonPath)
+				.style("stroke", "#F2F2F2")
+				.style("stroke-width", "30px")
+                .style("fill", "none")
+                .attr("transform", "scale(0.1), translate(1250, 800)")
 
 			///////////////////////////////////////////////////////////////////////////
 			////////////////////// Circle movement inside hexagon /////////////////////
