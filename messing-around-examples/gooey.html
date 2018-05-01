@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		
 		<!-- D3.js -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/d3.v4.min.js"></script>
 		
 		<style>
 			body {
@@ -219,10 +219,10 @@
 				d3.select(this)
 					.transition("moveing")
 					.duration(3000+3000 + 4000*Math.random())
-					.ease("linear")
+					.ease(d3.easeLinear)
 					.attr("cy", newy)
 					.attr("cx", newx)
-					.each("end", move);
+					.on("end", move);
 
 			}//function move
 
