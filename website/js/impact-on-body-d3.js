@@ -55,18 +55,32 @@ var staticGreen = g.append("circle")
     .style("opacity", 0.2)
     .on("click", clickForest);
 
+var staticRed = g.append("circle")
+    .attr('cx', 300)
+    .attr('cy', 150)
+    .attr('r', 95)
+    .style("fill", "F481A4")
+    .style("opacity", 0.2)
+    .on("click", clickCity);
+
 /*
  * Pulsing circles
  */
-function timeForTimeline(){
-    var pulseCircle = pulse.append("circle")
+function pulseCircles(){
+    var pulseGreen = pulse.append("circle")
         .attr('cx', 100)
         .attr('cy', 150)
         .style("opacity", 0.2)
+
+    var pulseRed = pulse.append("circle")
+        .attr('cx', 300)
+        .attr('cy', 150)
+        .style("opacity", 0.2)
+    
     repeat();
     
     function repeat() {
-      pulseCircle.attr('r', 90)
+      pulseGreen.attr('r', 90)
       .style("fill", "127C1D")
       .style("opacity", 0.01)
       .transition()
@@ -76,10 +90,21 @@ function timeForTimeline(){
       .style("fill", "white")
       .style("opacity", 0.2)
       .on("end", repeat);
-		}
+
+      pulseRed.attr('r', 90)
+      .style("fill", "F481A4")
+      .style("opacity", 0.01)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeSinIn)
+      .attr('r', 100+50)
+      .style("fill", "white")
+      .style("opacity", 0.2)
+      .on("end", repeat);
+	}
   }
 
-timeForTimeline();
+pulseCircles();
 
 /*
  * Particle handling functions and variable start here
