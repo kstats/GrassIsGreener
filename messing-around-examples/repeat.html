@@ -65,14 +65,14 @@
 // code, code, code, irrelevant code...
 
 function timeForTimeline(){ // har
-    var timeline = g.append("circle")
+    var pulseCircle = g.append("circle")
         .attr('cx', 100)
         .attr('cy', 150)
         .style("opacity", 0.2);
     repeat();
     
     function repeat() {
-      timeline.attr('r', 100)
+      pulseCircle.attr('r', 100)
       .style("fill", "127C1D")
       .transition()
       .duration(2000)
