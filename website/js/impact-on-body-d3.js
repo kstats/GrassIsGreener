@@ -2,7 +2,7 @@
  * Code is heavily based on Nadieh Bremer's http://bl.ocks.org/nbremer/cbf61944aeb3204d3e4986ea645afc2b
  * Nadieh's code is in turn heavily based on Justin Windle's http://codepen.io/soulwire/pen/foktm
  */
-
+$(function() {
 console.log("impact-on-body-d3.js");
 
 var width = 960,
@@ -29,7 +29,7 @@ var g = d3.select("#rectangle")
 
 var imgSize = 200;
 var forestImg = g.append("svg:image")
-    .attr("xlink:href", "noun_182948.svg") //forest image
+    .attr("xlink:href", "img/impact_body/noun_182948.svg") //forest image
     .attr("width", imgSize)
     .attr("height", imgSize)
     .attr("x", 0)
@@ -37,7 +37,7 @@ var forestImg = g.append("svg:image")
     .on("click", clickForest)
 
 var cityImg = g.append("svg:image")
-    .attr("xlink:href", "noun_1091790.svg") //city image
+    .attr("xlink:href", "img/impact_body/noun_1091790.svg") //city image
     .attr("width", imgSize)
     .attr("height", imgSize)
     .attr("x", width - imgSize)
@@ -184,3 +184,4 @@ function click(translateDelta) {
 d3.timer(function() {
     redraw();
 })
+});
