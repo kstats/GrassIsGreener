@@ -32,6 +32,18 @@
     <script src="js/why_not_d3_graph.js"></script>
     <script src="js/impact-on-body-d3.js"></script>
     <script src="js/mental-health.js"></script>
+
+
+    <!-- This information is needed for GeoJSON-->
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+    <link href='https://unpkg.com/mapbox-gl@0.43.0/dist/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:static; top:0; bottom:0; width:100%; height:500px;}
+    </style>
+
   </head>
 
   <body id="page-top">
@@ -176,7 +188,7 @@
         </div>
         <div class="row my-5">
           <div class="offset-4 col-8">
-            <div id="games">
+            <div id="gamesWhyNot">
               <h3 class="mb-3">Outdoor Recreation is Healthier than Indoor Recreation</h3>
               <p class="text-muted mb-3">
                 As we just learned above, studies have shown that outdoor recreation, compared to other recreational activities, can improve your health, for example by reducing the likelihood of near-sightedness.
@@ -221,6 +233,73 @@
               <p class="text-muted mb-3">
                 San Franciso, like many cities, is full of parks that are easily accessible by public transit or even just walking. Check out the map below to find a park in SF near you!
               </p>
+
+              <div id='map'></div>
+              <script>
+
+                // javascript code goes here!!!
+                
+                // url to our "raw" geo data
+                var dataURL = "https://raw.githubusercontent.com/clhenrick/geovisualization_workshop_ischool/master/data/nyc_crashes.geojson";
+                
+                // url to hexbins
+                var hexBinURL = "https://gist.githubusercontent.com/clhenrick/5787a12a8bf3b02821839e4f9556d997/raw/f18f34a319380ba471078baec382970dbc64a9ff/processed.json";
+
+                // access token to use with MapboxGL
+                var accessToken = 'pk.eyJ1IjoiZW5qYWxvdCIsImEiOiIzOTJmMjBiZmI2NGQ2ZjAzODhiMzhiOGI2MTI1YTk4YSJ9.sIOXXU3TPp5dLg_L3cUxhQ';
+
+                //set mapboxGL access token
+                mapboxgl.accessToken = accessToken;
+                
+                //instantiate the map object
+                var map = new mapboxgl.Map({
+                  container: "map",
+                  style: "mapbox://styles/mapbox/outdoors-v9",
+                  center: [-122.4194, 37.7749],
+                  zoom: 10
+                });
+                
+                // add map navigation controls
+                map.addControl(new mapboxgl.NavigationControl());
+                // do stuff on map load
+                map.on("load", function(){
+                  //load our data
+                  d3.json("./json/geo_json.json", function(error, data){
+                    if(error) throw error;
+                    console.log("TEST")
+                    console.log(data);
+                    //add our source
+                    map.addSource("crashes",{
+                      type: "geojson",
+                      data: data//,
+                      //cluster: true
+                    });
+                    
+                    //add the layer to the map
+                    map.addLayer({
+                      id: "crashes", 
+                      type: "circle", 
+                      source: "crashes",
+                      layout: {},
+                      paint: {
+                        "circle-color": "#0000ff",
+                        "circle-opacity": 0.8,
+                        "circle-radius": {
+                          base: 3.0,
+                          stops:[
+                            [12, 2], 
+                            [22, 180]
+                          ]
+                        }
+                      }
+                    });
+                    
+                  }); //ends d3.json
+                  
+                }); //ends maponload
+                
+              </script>
+
             </div>
           </div>
         </div>
