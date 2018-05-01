@@ -50,12 +50,12 @@
     var g = d3.select("#rectangle")
 
     var forestImg = g.append("svg:image")
-    .attr("xlink:href", "noun_182948.svg") //forest image
-    .attr("width", imgSize)
-    .attr("height", imgSize)
-    .attr("x", 0)
-    .attr("y", height/5)
-    .on("click", clickForest)
+        .attr("xlink:href", "noun_182948.svg") //forest image
+        .attr("width", imgSize)
+        .attr("height", imgSize)
+        .attr("x", 0)
+        .attr("y", height/5)
+        .on("click", clickForest)
 
     var svg = d3.select("body")
         .append("svg")
@@ -65,18 +65,19 @@
 // code, code, code, irrelevant code...
 
 function timeForTimeline(){ // har
-    var timeline = svg.append("circle")
-        .attr('cx', 50)
-        .attr('cy', 430);
+    var timeline = g.append("circle")
+        .attr('cx', 100)
+        .attr('cy', 150)
+        .style("opacity", 0.2);
     repeat();
     
     function repeat() {
-      timeline.attr('r',10)
-      .style("fill", "black")
+      timeline.attr('r', 100)
+      .style("fill", "127C1D")
       .transition()
       .duration(2000)
       .ease(d3.easeSinIn)
-      .attr('r', 100)
+      .attr('r', 100+50)
       .style("fill", "white")
       .on("end", repeat);
 		}
