@@ -1,33 +1,142 @@
 
-.img-water{
+.img-person{
 	position: absolute; 
-	left: 500px; 
+	left: 250px; 
+	top:300px;
 	z-index: 2;
-	height:100px;
-	width:100px;
-}
-
-.img-comm{
-	position: absolute; 
-	left: 5px; 
-	z-index: 2;
-	height:100px;
-	width:100px;
-}
-
-.img-health{
-	position: absolute; 
-	left:250px; 
-	z-index: 2;
-	height:100px;
-	width:100px;
+	height:200px;
+	width:150px;
+	visibility:hidden;
 }
 
 .img-co2{
 	position: absolute; 
-	left: 100px; 
-	down: 100px;
+	left: 350px; 
+	top:100px;
+	z-index: 2;
+	height:100px;
+	width:250px;
+	visibility:hidden;
+}
+
+.img-rain{
+	position: absolute; 
+	left: 350px; 
+	top:50px;
+	z-index: 2;
+	height:150px;
+	width:250px;
+}
+
+.img-tulip{
+	position: absolute; 
+	left: 50px; 
+	top:400px;
+	z-index: 2;
+	height:100px;
+	width:75px;
+}
+
+.img-bench{
+	position: absolute; 
+	left: 350px; 
+	top:300px;
+	z-index: 2;
+	height:200px;
+	width:300px;
+}
+
+.img-water{
+	position: absolute; 
+	left: 50px; 
+	top:500px;
+	z-index: 2;
+	height:100px;
+	width:200px;
+}
+
+.img-stars{
+	position: absolute; 
+	left: 275px; 
+	top:200px;
 	z-index: 2;
 	height:100px;
 	width:100px;
+}
+.img-stars2{
+	position: absolute; 
+	left: 420px; 
+	top:200px;
+	z-index: 2;
+	height:100px;
+	width:100px;
+}
+
+.img-sadlines{
+	position: absolute; 
+	left: 205px; 
+	top:280px;
+	z-index: 2;
+	height:100px;
+	width:250px;
+	visibility:hidden;
+}
+
+.img-wilted{
+	position: absolute; 
+	left: 100px; 
+	top:400px;
+	z-index: 2;
+	height:100px;
+	width:75px;
+	image:hidden;
+}
+
+.img-tree{
+	position: absolute; 
+	left: 50px; 
+	top:100px;
+	z-index: 2;
+	height:400px;
+	width:250px;
+}
+
+.container-static{
+	position: absolute;
+	left: 300px;
+	z-index:0;
+	height:600px;
+	width:600px;
+}
+
+.container-moving{
+	position: fixed;
+	left: 500px;
+	top:0px;
+	z-index:0;
+	height:600px;
+	width:600px;
+}
+
+.fillerStatic{
+	position:static;
+	left:500px;
+	top:0px;
+	height:600px;
+	width:600px;
+	background-color:blue;
+	
+}
+
+.fillerFixed{
+	height:600px;
+	width:600px;
+	position:fixed;
+	background-color:green;
+	top:0px;
+	left:300px;
+}
+
+.commText{
+	width: 400px;
 }
