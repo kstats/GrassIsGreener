@@ -53,7 +53,7 @@ var staticGreen = g.append("circle")
     .attr('cx', 110)
     .attr('cy', 110)
     .attr('r', circleSize)
-    .style("fill", "127C1D")
+    .style("fill", "668203")
     .style("opacity", 0.3)
     .on("click", clickForest);
 
@@ -72,6 +72,7 @@ function pulseCircles(){
     var pulseGreen = pulse.append("circle")
         .attr('cx', 110)
         .attr('cy', 110)
+        .style("fill", "668203")
 
     var pulseRed = pulse.append("circle")
         .attr('cx', 850)
@@ -85,7 +86,6 @@ function pulseCircles(){
       .duration(1000)
       .ease(d3.easeSinOut)
       .attr('r', circleSize)
-      .style("fill", "127C1D")
       .style("opacity", 0.3)
       .transition()
       .duration(1000)
@@ -122,7 +122,7 @@ var circle_group = person.append("g")
                     .style("isolation", "isolate");
 
 var id = 0, // to keep track of each particle
-    forestColors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624', '#234426', '#7CFF89'],
+    forestColors = ['#8BB004', '#1D2900', '#3E4F02', '#668203', '#82BA00'],
     forestParticles = [];
     cityColors = ['#F7EDF0', '#F4C6D4', '#F4ABC1', '#F4A8BF', '#F481A4', '#FF8CAE', '#FF2B6A'],
     cityParticles = [];
