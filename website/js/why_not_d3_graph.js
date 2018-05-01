@@ -22,7 +22,7 @@ const WHY_NOT_TRANSITION_MS = 500;
 $(function() {
   const LARGE_WIDTH = 800,
         LARGE_HEIGHT = 600,
-        SMALL_WIDTH = 300,
+        SMALL_WIDTH = 280,
         SMALL_HEIGHT = 300,
         LABEL_WIDTH = 200;
 
@@ -156,7 +156,7 @@ $(function() {
     icon
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
-      .attr('x', 0)
+      .attr('x', barHeight)
       .attr('width', barHeight)
       .transition()
         .delay(WHY_NOT_TRANSITION_MS)
@@ -167,7 +167,7 @@ $(function() {
       .duration(WHY_NOT_TRANSITION_MS)
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
-      .attr('x', barHeight + 5)
+      .attr('x', 3 * barHeight + 2)
       .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
   }
 
@@ -197,6 +197,56 @@ $(function() {
             return .6
           }
         });
+
+      yScale = d3.scaleLinear().domain([0, num_rows]).range([0, SMALL_HEIGHT]);
+      barHeight = SMALL_HEIGHT/num_rows - 5;
+      xScale = d3.scaleLinear().domain([0, max_val]).range([0, SMALL_WIDTH - (barHeight + 5)]);
+
+      let extra_focus_offset = 0;
+      rect.transition('updateChartSize')
+        .duration(WHY_NOT_TRANSITION_MS)
+        .attr('y', function(d, i) {
+          if (d.state === 'highlight') {
+            extra_focus_offset += 2 * barHeight;
+            return yScale(i) + extra_focus_offset - barHeight;
+          }
+          return yScale(i) + extra_focus_offset;
+        })
+        .attr('height', barHeight)
+        .attr('x', 3 * barHeight + 2)
+        .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
+
+      extra_focus_offset = 0;
+      icon
+        .attr('opacity', 1)
+          .transition()
+          .duration(WHY_NOT_TRANSITION_MS)
+          .attr('y', function(d, i) {
+            if (d.state == 'highlight') {
+              extra_focus_offset += 2 * barHeight;
+              return yScale(i) + extra_focus_offset - 2 * barHeight;
+            }
+            return yScale(i) + extra_focus_offset;
+          })
+          .attr('height', function(d) {
+            if (d.state === 'highlight') {
+              return barHeight * 3;
+            }
+            return barHeight;
+          })
+          .attr('x', function(d) {
+            if (d.state === 'highlight') {
+              return 0;
+            }
+            return barHeight;
+          })
+          .attr('width', function(d) {
+            if (d.state === 'highlight') {
+              return barHeight * 3;
+            }
+            return barHeight;
+          });
+
     }
   }
 
@@ -225,14 +275,14 @@ $(function() {
     chart.style('left', $('#whyNotChart').position() + 'px');
 
     $("#whyNotChart").insertAfter($("#whyNotChartFillerStart"));
-    $("#whyNotChartFillerEnd").css('height', '300px');
+    $("#whyNotChartFillerEnd").css('height', (SMALL_HEIGHT + 60) + 'px');
   }
 
   function makeStaticEnd() {
     console.log('makeStaticEnd');
 
     chart
-      .attr('height', SMALL_HEIGHT)
+      .attr('height', (SMALL_HEIGHT + 60) + 'px')
       .attr('width', SMALL_WIDTH);
     chart.style('position', 'static');
     $("#whyNotChart").insertAfter($("#whyNotChartFillerEnd"));
@@ -261,9 +311,9 @@ $(function() {
 
   setWaypoint('whyNot', '100%', () => {}, destroyBar);
   setWaypoint('whyNot', '60%', createLargeBar, () => {});
+  setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   setWaypoint('whyNotChartFillerStart', '100px', smallBar, largeBar);
   setWaypoint('whyNotChartFillerStart', '100px', makeFixedStart, makeStaticStart);
-  setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   // TODO: Tableau plug-in messes up waypoint here :'( May need to wait until Tableau
   // is loaded to do these, or give it a fixed height to start.
 
@@ -274,7 +324,7 @@ $(function() {
     currReasons = navigationTransitions[i].relevantReasons;
     setWaypoint(
       navigationTransitions[i].triggerElmt,
-      '80%',
+      '300px',
       // Highlight the new category and fade out the previous one.
       updateReasonState(currReasons, prevReasons),
       // Highlight the previous category and return the new category to "to-be-processed"
