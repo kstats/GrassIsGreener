@@ -80,25 +80,33 @@ function pulseCircles(){
     repeat();
     
     function repeat() {
-      pulseGreen.attr('r', circleSize)
-      .style("fill", "127C1D")
-      .style("opacity", 0.03)
+      pulseGreen
       .transition()
-      .duration(2000)
+      .duration(1000)
+      .ease(d3.easeSinOut)
+      .attr('r', circleSize)
+      .style("fill", "127C1D")
+      .style("opacity", 0.3)
+      .transition()
+      .duration(1000)
       .ease(d3.easeSinIn)
-      .attr('r', 90)
-      .style("fill", "white")
+      .attr('r', 70)
+      //.style("fill", "white")
       .style("opacity", 0.4)
       .on("end", repeat);
 
-      pulseRed.attr('r', circleSize)
-      .style("fill", "F481A4")
-      .style("opacity", 0.03)
+      pulseRed
       .transition()
-      .duration(2000)
+      .duration(1000)
+      .ease(d3.easeSinOut)
+      .attr('r', circleSize)
+      .style("fill", "F481A4")
+      .style("opacity", 0.3)
+      .transition()
+      .duration(1000)
       .ease(d3.easeSinIn)
-      .attr('r', 90)
-      .style("fill", "white")
+      .attr('r', 70)
+      //.style("fill", "white")
       .style("opacity", 0.4)
       .on("end", repeat);
 	}
