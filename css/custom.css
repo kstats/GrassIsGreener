@@ -140,3 +140,7 @@
 .commText{
 	width: 400px;
 }
+
+p#ex1 {
+    max-width: 650px;
+}
