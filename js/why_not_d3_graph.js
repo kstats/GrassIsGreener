@@ -333,7 +333,7 @@ $(function() {
   };
 
   let navigationTransitions = [
-    {'triggerElmt': 'games', 'relevantReasons': ['Other recreation']},
+    {'triggerElmt': 'gamesWhyNot', 'relevantReasons': ['Other recreation']},
     {'triggerElmt': 'family', 'relevantReasons': ['Family responsibilities']},
     {'triggerElmt': 'expensive', 'relevantReasons': ['Equipment too expensive', 'Location too expensive']},
     {'triggerElmt': 'alone', 'relevantReasons': ['No friends', 'Not enough info']},
