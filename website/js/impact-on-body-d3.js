@@ -13,7 +13,8 @@ var width = 960,
     MIN_Y = 30,
     curX = 130,
     curY = -15,
-    scaleFactor = 3.5;
+    scaleFactor = 3.5,
+    imgSize = 200;
 
 var svg = d3.select("#sparkle-wrapper")
             .attr("width", width)
@@ -28,7 +29,6 @@ var person = d3.select("#personFill")
 
 var g = d3.select("#rectangle")
 
-var imgSize = 200;
 var forestImg = g.append("svg:image")
     .attr("xlink:href", "img/impact_body/noun_182948.svg") //forest image
     .attr("width", imgSize)
@@ -36,6 +36,7 @@ var forestImg = g.append("svg:image")
     .attr("x", 0)
     .attr("y", height/5)
     .on("click", clickForest)
+    .attr("class", "pulse")
 
 var cityImg = g.append("svg:image")
     .attr("xlink:href", "img/impact_body/noun_1091790.svg") //city image
