@@ -33,6 +33,7 @@
   <script>
     // Feel free to change or delete any of the code you see!
      
+    // Upper left corner
     var node1 = d3.select("body").append("div")
     	.style("top","0px")
     	.style("left","20px")
@@ -56,6 +57,7 @@
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'});
     
     
+    // Center dot
     var node2 = d3.select("body").append("div").classed("node", true)
     	.style("top","100px")
     	.style("left","120px")
@@ -70,6 +72,7 @@
     	.attr('r',15)
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': null});
     
+    //Left-most column, middle row
     var node3 = d3.select("body").append("div").classed("node", true)
     	.style("top","100px")
     	.style("left","20px")
@@ -83,7 +86,8 @@
     node3.append("circle")
     	.attr('r',15)
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'});
-        
+     
+    //Top row, middle column
     var node4 = d3.select("body").append("div").classed("node", true)
     	.style("top","0px")
     	.style("left","120px")
@@ -111,7 +115,7 @@
     .classed("shadow",true);
     
     
-        
+    // Right-most column, middle row
     var node5 = d3.select("body").append("div").classed("node", true)
     	.style("top","100px")
     	.style("left","220px")
@@ -138,7 +142,7 @@
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'})
     .classed("shadow",true);
     
-    
+    // upper right-hand corner
     var node6 = d3.select("body").append("div").classed("node", true)
     	.style("top","0px")
     	.style("left","220px")
@@ -264,13 +268,13 @@
     
     
     
-    ////////////////////////////
-        var node7 = d3.select("body").append("div").classed("node", true)
-    	.style("top","0px")
-    	.style("left","420px")
-    	.style("position","absolute")
-    	.append("div").attr("draggable", true)
-      .append("svg").style({"height": "0px", "width": "0px", "padding": "50px"});
+    // extra friend?
+    var node7 = d3.select("body").append("div").classed("node", true)
+        .style("top","0px")
+        .style("left","420px")
+        .style("position","absolute")
+        .append("div").attr("draggable", true)
+        .append("svg").style({"height": "0px", "width": "0px", "padding": "50px"});
       
     node7.append("circle")
     	.attr('cx',15)
@@ -347,7 +351,7 @@
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'})
     .classed("shadow",true);
     
-    
+    // lower left-hand corner
     var node8 = d3.select("body").append("div")
     	.style("top","200px")
     	.style("left","20px")
@@ -380,7 +384,7 @@
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'});
     
     
-        
+    // bottom row, center column
     var node9 = d3.select("body").append("div")
     	.style("top","200px")
     	.style("left","120px")
@@ -413,10 +417,8 @@
     	.attr('r',15)
     	.style({'stroke': '#49c3b1', 'stroke-width': 5, 'fill': '#fff'});
     
-    // vibrating
     
-    
-    
+    // lower right-hand corner
     var node10 = d3.select("body").append("div").classed("node", true)
     	.style("top","200px")
     	.style("left","220px")
