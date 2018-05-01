@@ -28,6 +28,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
     <script src="js/why_not_d3_graph.js"></script>
+    <script src="js/impact-on-body-d3.js"></script>
   </head>
 
   <body id="page-top">
@@ -281,25 +282,25 @@
                   "A higher level of stress — as evidenced by an elevated serum cortisol level - was 
                   observed in subjects exposed to the urban environment than in the forest group"</p>
         </div>
-        <div id="outdoorImpact">
-            <svg id="sparkle-wrapper" height="100" width="100">
-                <defs>
-                    <clipPath id="clipPath" >
-                            <circle class="st0" cx="50" cy="25.5" r="6.6"/>
-                            <path class="st0" d="M60.9,39.7v12.8c0,2.8-1.8,5.3-4.4,6.3v17.9c0,2.4-1.9,4.4-4.4,4.4h-4.4c-2.4,0-4.3-2-4.4-4.4V58.7
-                                c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
-                    </clipPath>
-                </defs>
-                <g id="personFill" fill="#ccc" style="clip-path: url(#clipPath);">
-                    <rect id="fill" width=300 height=100 fill="#ccc"></rect>       
-                </g>
-                <g id="rectangle">
-                </g>
-            </svg>
-        </div>
-      </div>
-      
+      </div> <!--Close of container div-->
     </section>
+    <div id="outdoorImpact">
+        <svg id="sparkle-wrapper" height="100" width="100">
+            <defs>
+                <clipPath id="clipPath" >
+                        <circle class="st0" cx="50" cy="25.5" r="6.6"/>
+                        <path class="st0" d="M60.9,39.7v12.8c0,2.8-1.8,5.3-4.4,6.3v17.9c0,2.4-1.9,4.4-4.4,4.4h-4.4c-2.4,0-4.3-2-4.4-4.4V58.7
+                            c-2.6-1-4.4-3.5-4.4-6.3V39.7c0-2.5,2-4.5,4.5-4.5h12.8C58.9,35.2,60.9,37.2,60.9,39.7z"/>
+                </clipPath>
+            </defs>
+            <g id="personFill" fill="#ccc" style="clip-path: url(#clipPath);">
+                <rect id="fill" width=300 height=100 fill="#ccc"></rect>       
+            </g>
+            <g id="rectangle">
+            </g>
+        </svg>
+    </div> <!--Close of outdoorImpact div-->
+   
 
     <section id="whyNot">
       <div class="container">
