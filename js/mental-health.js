@@ -9,14 +9,7 @@ var width = 960,
             .attr("width", width)
             .attr("height", height)
             .attr("pointer-events", "all")
-            .attr("transform", "scale("+scaleFactor+")")
-            .on("mousemove", mousemove);
-
-    // Do something fun with this, e.g. add particles on mousemove
-    function mousemove() {
-        var point = d3.mouse(this);
-        console.log("mousemove...: point:" + point);
-    }
+            .attr("transform", "scale("+scaleFactor+")");
 
     ///////////////////////////////////////////////////////////////////////////
 			//////////////////// Set up and initiate svg containers ///////////////////
