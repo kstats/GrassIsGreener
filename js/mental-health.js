@@ -120,7 +120,7 @@ var width = 960,
 			circle.transition("grow")
 				.duration(function(d,i) { return Math.random()*2000+500; })
 				.delay(function(d,i) { return Math.random()*3000*2;})
-				.attr("r", function(d,i) { console.log(d.r); return d.r % 27 ; });
+				.attr("r", function(d,i) { return d.r % 27 ; });
 
 			///////////////////////////////////////////////////////////////////////////
 			///////////////////////// Place Hexagon in center /////////////////////////
