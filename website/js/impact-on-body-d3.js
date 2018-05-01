@@ -14,7 +14,7 @@ var width = 960,
     curX = 130,
     curY = -15,
     scaleFactor = 3.5,
-    imgSize = 200;
+    imgSize = 120;
 
 var wrapper = d3.select("#sparkle-wrapper")
             .attr("width", width)
@@ -34,33 +34,35 @@ var forestImg = g.append("svg:image")
     .attr("xlink:href", "img/impact_body/noun_182948.svg") //forest image
     .attr("width", imgSize)
     .attr("height", imgSize)
-    .attr("x", 0)
+    .attr("x", 50)
     .attr("y", height/5)
     .on("click", clickForest)
     .attr("class", "pulse")
 
 var cityImg = g.append("svg:image")
-    .attr("xlink:href", "img/impact_body/noun_1091790.svg") //city image
+    .attr("xlink:href", "img/impact_body/noun_164718.svg") //city image
     .attr("width", imgSize)
     .attr("height", imgSize)
-    .attr("x", width - imgSize)
+    .attr("x", width - imgSize-50)
     .attr("y", height/5)
     .on("click", clickCity)
 
+var circleSize = 58;
+
 var staticGreen = g.append("circle")
-    .attr('cx', 100)
-    .attr('cy', 150)
-    .attr('r', 95)
+    .attr('cx', 110)
+    .attr('cy', 110)
+    .attr('r', circleSize)
     .style("fill", "127C1D")
-    .style("opacity", 0.2)
+    .style("opacity", 0.3)
     .on("click", clickForest);
 
 var staticRed = g.append("circle")
-    .attr('cx', 855)
-    .attr('cy', 150)
-    .attr('r', 95)
+    .attr('cx', 850)
+    .attr('cy', 110)
+    .attr('r', circleSize-6)
     .style("fill", "F481A4")
-    .style("opacity", 0.2)
+    .style("opacity", 0.3)
     .on("click", clickCity);
 
 /*
@@ -68,38 +70,36 @@ var staticRed = g.append("circle")
  */
 function pulseCircles(){
     var pulseGreen = pulse.append("circle")
-        .attr('cx', 100)
-        .attr('cy', 150)
-        .style("opacity", 0.2)
+        .attr('cx', 110)
+        .attr('cy', 110)
 
     var pulseRed = pulse.append("circle")
-        .attr('cx', 855)
-        .attr('cy', 150)
-        .style("opacity", 0.2)
+        .attr('cx', 850)
+        .attr('cy', 110)
     
     repeat();
     
     function repeat() {
-      pulseGreen.attr('r', 90)
+      pulseGreen.attr('r', circleSize)
       .style("fill", "127C1D")
-      .style("opacity", 0.01)
+      .style("opacity", 0.03)
       .transition()
       .duration(2000)
       .ease(d3.easeSinIn)
-      .attr('r', 100+50)
+      .attr('r', 90)
       .style("fill", "white")
-      .style("opacity", 0.2)
+      .style("opacity", 0.4)
       .on("end", repeat);
 
-      pulseRed.attr('r', 90)
+      pulseRed.attr('r', circleSize)
       .style("fill", "F481A4")
-      .style("opacity", 0.01)
+      .style("opacity", 0.03)
       .transition()
       .duration(2000)
       .ease(d3.easeSinIn)
-      .attr('r', 100+50)
+      .attr('r', 90)
       .style("fill", "white")
-      .style("opacity", 0.2)
+      .style("opacity", 0.4)
       .on("end", repeat);
 	}
   }
