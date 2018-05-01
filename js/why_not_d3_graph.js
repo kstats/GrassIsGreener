@@ -80,6 +80,7 @@ $(function() {
       .attr('x', LABEL_WIDTH)
       .attr('width', 0)
       .attr('opacity', .6)
+      .style('fill', '#93BA04')
       // Uncomment to make the bars click-able. If doing so, also add css to
       // make the mouse change when hovering over them.
       // .on('click', function(d) {
