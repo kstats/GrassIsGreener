@@ -19,19 +19,18 @@ var svg = d3.select("body")
 
 function timeForTimeline(){ // har
     var timeline = svg.append("circle")
-        .attr("stroke", "steelblue");
+        .attr('cx', 50)
+        .attr('cy', 430);
     repeat();
     
     function repeat() {
-      timeline.attr('cx', 10)
-              .attr('cy', 130)
-              .attr('r',10)
+      timeline.attr('r',10)
+      .style("fill", "black")
       .transition()
-      .duration(4000)
-      .ease(d3.easeLinear)
-      .attr('cx', 20)
-      .attr('cy', 430)
+      .duration(2000)
+      .ease(d3.easeSinIn)
       .attr('r', 100)
+      .style("fill", "white")
       .on("end", repeat);
 		}
   }
