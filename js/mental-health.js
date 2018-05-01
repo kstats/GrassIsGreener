@@ -73,7 +73,7 @@ var width = 960,
 
 			//Create a gradient for the fill
 			var colors = ["#490A3D","#BD1550","#E97F02","#F8CA00","#8A9B0F"];
-			forestColors = ['#8CFF98', '#22D834', '#127C1D', '#18471D', '#1F5624'],
+			forestColors = ['#8BB004', '#1D2900', '#3E4F02', '#18471D', '#151F00'],
 			defs.append("linearGradient")
 				.attr("id", "gradientRainbow")
 				.attr("gradientUnits", "userSpaceOnUse") 
