@@ -22,7 +22,7 @@ const WHY_NOT_TRANSITION_MS = 500;
 $(function() {
   const LARGE_WIDTH = 800,
         LARGE_HEIGHT = 600,
-        SMALL_WIDTH = 300,
+        SMALL_WIDTH = 280,
         SMALL_HEIGHT = 300,
         LABEL_WIDTH = 200;
 
@@ -80,6 +80,13 @@ $(function() {
       .attr('x', LABEL_WIDTH)
       .attr('width', 0)
       .attr('opacity', .6)
+      // Uncomment to make the bars click-able. If doing so, also add css to
+      // make the mouse change when hovering over them.
+      // .on('click', function(d) {
+      //   if (waypointMap[d.reason]) {
+      //     window.scrollTo(0, waypointMap[d.reason].triggerPoint + 10)
+      //   }
+      // })
       .transition('updateChartSize')
         .delay(function(d, i) { return 100 * (i + 1)})
         .duration(WHY_NOT_TRANSITION_MS)
@@ -117,10 +124,17 @@ $(function() {
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, LARGE_HEIGHT]);
     barHeight = LARGE_HEIGHT/num_rows - 10;
 
-    reasonLabel.transition()
-      .duration(WHY_NOT_TRANSITION_MS)
-      .attr('opacity', 1)
-      .delay(WHY_NOT_TRANSITION_MS);
+    reasonLabel
+      .transition()
+        .duration(0)
+        .attr('y', function(d, i) { return yScale(i) + barHeight / 2})
+        .attr('x', 0)
+        .attr('alignment-baseline', 'middle')
+        .attr('opacity', 0)
+        .transition()
+          .duration(WHY_NOT_TRANSITION_MS)
+          .attr('opacity', 1)
+          .delay(WHY_NOT_TRANSITION_MS);
     percentLabel.transition()
       .duration(WHY_NOT_TRANSITION_MS)
       .attr('opacity', 1)
@@ -156,7 +170,7 @@ $(function() {
     icon
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
-      .attr('x', 0)
+      .attr('x', barHeight)
       .attr('width', barHeight)
       .transition()
         .delay(WHY_NOT_TRANSITION_MS)
@@ -167,7 +181,7 @@ $(function() {
       .duration(WHY_NOT_TRANSITION_MS)
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
-      .attr('x', barHeight + 5)
+      .attr('x', 3 * barHeight + 2)
       .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
   }
 
@@ -197,15 +211,83 @@ $(function() {
             return .6
           }
         });
+
+      yScale = d3.scaleLinear().domain([0, num_rows]).range([0, SMALL_HEIGHT]);
+      barHeight = SMALL_HEIGHT/num_rows - 5;
+      xScale = d3.scaleLinear().domain([0, max_val]).range([0, SMALL_WIDTH - (barHeight + 5)]);
+
+      let extraFocusOffset = 0;
+      rect.transition('updateChartSize')
+        .duration(WHY_NOT_TRANSITION_MS)
+        .attr('y', function(d, i) {
+          if (d.state === 'highlight') {
+            extraFocusOffset += 2 * barHeight;
+            return yScale(i) + extraFocusOffset - 2 * barHeight;
+          }
+          return yScale(i) + extraFocusOffset;
+        })
+        .attr('height', barHeight)
+        .attr('x', 3 * barHeight + 2)
+        .attr('width', function(d) { return xScale(parseFloat(d.percent)) });
+
+      extraFocusOffset = 0;
+      icon
+        .attr('opacity', 1)
+          .transition()
+          .duration(WHY_NOT_TRANSITION_MS)
+          .attr('y', function(d, i) {
+            if (d.state === 'highlight') {
+              extraFocusOffset += 2 * barHeight;
+              return yScale(i) + extraFocusOffset - 2 * barHeight;
+            }
+            return yScale(i) + extraFocusOffset;
+          })
+          .attr('height', function(d) {
+            if (d.state === 'highlight') {
+              return barHeight * 3;
+            }
+            return barHeight;
+          })
+          .attr('x', function(d) {
+            if (d.state === 'highlight') {
+              return 0;
+            }
+            return barHeight;
+          })
+          .attr('width', function(d) {
+            if (d.state === 'highlight') {
+              return barHeight * 3;
+            }
+            return barHeight;
+          });
+
+      extraFocusOffset = 0;
+      reasonLabel
+        .attr('x', 3 * barHeight + 2)
+        .attr('alignment-baseline', 'top')
+        .transition()
+          .attr('y', function(d, i) {
+            if (d.state === 'highlight') {
+              extraFocusOffset += 2 * barHeight
+            }
+            return yScale(i) + extraFocusOffset;
+          })
+          .attr('opacity', function(d) {
+            if (d.state === 'highlight') {
+              return 1
+            }
+            return 0;
+          });
+
     }
   }
 
   function makeFixedStart() {
     console.log('makeFixedStart');
+    $("#whyNotChartFillerStart").css('height', '600px');
     chart.style('position', 'fixed');
     chart.style('top', '100px');
     chart.style('left', $('#whyNotChart').position() + 'px');
-    $("#whyNotChartFillerStart").css('height', '600px');
   }
 
   function makeStaticStart() {
@@ -225,14 +307,14 @@ $(function() {
     chart.style('left', $('#whyNotChart').position() + 'px');
 
     $("#whyNotChart").insertAfter($("#whyNotChartFillerStart"));
-    $("#whyNotChartFillerEnd").css('height', '300px');
+    $("#whyNotChartFillerEnd").css('height', (SMALL_HEIGHT + 60) + 'px');
   }
 
   function makeStaticEnd() {
     console.log('makeStaticEnd');
 
     chart
-      .attr('height', SMALL_HEIGHT)
+      .attr('height', (SMALL_HEIGHT + 60) + 'px')
       .attr('width', SMALL_WIDTH);
     chart.style('position', 'static');
     $("#whyNotChart").insertAfter($("#whyNotChartFillerEnd"));
@@ -261,25 +343,31 @@ $(function() {
 
   setWaypoint('whyNot', '100%', () => {}, destroyBar);
   setWaypoint('whyNot', '60%', createLargeBar, () => {});
+  setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   setWaypoint('whyNotChartFillerStart', '100px', smallBar, largeBar);
   setWaypoint('whyNotChartFillerStart', '100px', makeFixedStart, makeStaticStart);
-  setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   // TODO: Tableau plug-in messes up waypoint here :'( May need to wait until Tableau
   // is loaded to do these, or give it a fixed height to start.
+
+  let waypointMap = {}
+  let waypoint
 
   // Set up appropriate highlighting
   let currReasons = []
   let prevReasons = []
   for (var i = 0; i < navigationTransitions.length; i++) {
     currReasons = navigationTransitions[i].relevantReasons;
-    setWaypoint(
+    waypoint = setWaypoint(
       navigationTransitions[i].triggerElmt,
-      '80%',
+      '200px',
       // Highlight the new category and fade out the previous one.
       updateReasonState(currReasons, prevReasons),
       // Highlight the previous category and return the new category to "to-be-processed"
       updateReasonState(prevReasons, [], currReasons)
     );
+    for (var j = 0; j < currReasons.length; j++) {
+      waypointMap[currReasons[j]] = waypoint;
+    }
     prevReasons = currReasons;
   }
   setWaypoint('whyNotChartFillerEnd', '100px', updateReasonState([], prevReasons), updateReasonState(prevReasons))
