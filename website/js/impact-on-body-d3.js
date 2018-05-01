@@ -56,7 +56,7 @@ var staticGreen = g.append("circle")
     .on("click", clickForest);
 
 var staticRed = g.append("circle")
-    .attr('cx', 300)
+    .attr('cx', 855)
     .attr('cy', 150)
     .attr('r', 95)
     .style("fill", "F481A4")
@@ -73,7 +73,7 @@ function pulseCircles(){
         .style("opacity", 0.2)
 
     var pulseRed = pulse.append("circle")
-        .attr('cx', 300)
+        .attr('cx', 855)
         .attr('cy', 150)
         .style("opacity", 0.2)
     
