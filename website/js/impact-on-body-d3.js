@@ -6,13 +6,14 @@ $(function() {
 console.log("impact-on-body-d3.js");
 
 var width = 960,
-    height = 500,
+    height = 250,
     MAX_X = 55,
     MIN_X = 49,
     MAX_Y = 60,
     MIN_Y = 30,
     curX = 130,
-    curY = 26;
+    curY = -15,
+    scaleFactor = 3.5;
 
 var svg = d3.select("#sparkle-wrapper")
             .attr("width", width)
@@ -20,9 +21,9 @@ var svg = d3.select("#sparkle-wrapper")
 
 var person = d3.select("#personFill")
             .attr("pointer-events", "all")
-            .attr("transform", "scale(4), translate("+curX+"," +curY + ")") // add a transform for translation to move it.
+            .attr("transform", "scale("+scaleFactor+"), translate("+curX+"," +curY + ")") // add a transform for translation to move it.
             .attr("x", width)
-            .attr("y", height/2)
+            .attr("y", height/5)
             .on("mousemove", mousemove);
 
 var g = d3.select("#rectangle")
@@ -33,7 +34,7 @@ var forestImg = g.append("svg:image")
     .attr("width", imgSize)
     .attr("height", imgSize)
     .attr("x", 0)
-    .attr("y", height/2)
+    .attr("y", height/5)
     .on("click", clickForest)
 
 var cityImg = g.append("svg:image")
@@ -41,7 +42,7 @@ var cityImg = g.append("svg:image")
     .attr("width", imgSize)
     .attr("height", imgSize)
     .attr("x", width - imgSize)
-    .attr("y", height/2)
+    .attr("y", height/5)
     .on("click", clickCity)
 
 
@@ -176,7 +177,7 @@ function click(translateDelta) {
     add_particles(x, y, 5);
     console.log("moving the person from" + curX + " to " + curX + translateDelta)
     curX = curX + translateDelta
-    person.attr("transform", "scale(4), translate("+curX+", 25)")
+    person.attr("transform", "scale(" + scaleFactor + "), translate("+curX+", " + curY+")")
     
 }
 
