@@ -16,7 +16,7 @@ var width = 960,
     scaleFactor = 3.5,
     imgSize = 200;
 
-var svg = d3.select("#sparkle-wrapper")
+var wrapper = d3.select("#sparkle-wrapper")
             .attr("width", width)
             .attr("height", height); // set size of background rectangle
 
@@ -27,7 +27,8 @@ var person = d3.select("#personFill")
             .attr("y", height/5)
             .on("mousemove", mousemove);
 
-var g = d3.select("#rectangle")
+var pulse = wrapper.append('g').classed('pulse', true);
+var g = wrapper.append('g').classed("rectangle", true);
 
 var forestImg = g.append("svg:image")
     .attr("xlink:href", "img/impact_body/noun_182948.svg") //forest image
@@ -46,6 +47,39 @@ var cityImg = g.append("svg:image")
     .attr("y", height/5)
     .on("click", clickCity)
 
+var staticGreen = g.append("circle")
+    .attr('cx', 100)
+    .attr('cy', 150)
+    .attr('r', 95)
+    .style("fill", "127C1D")
+    .style("opacity", 0.2)
+    .on("click", clickForest);
+
+/*
+ * Pulsing circles
+ */
+function timeForTimeline(){
+    var pulseCircle = pulse.append("circle")
+        .attr('cx', 100)
+        .attr('cy', 150)
+        .style("opacity", 0.2)
+    repeat();
+    
+    function repeat() {
+      pulseCircle.attr('r', 90)
+      .style("fill", "127C1D")
+      .style("opacity", 0.01)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeSinIn)
+      .attr('r', 100+50)
+      .style("fill", "white")
+      .style("opacity", 0.2)
+      .on("end", repeat);
+		}
+  }
+
+timeForTimeline();
 
 /*
  * Particle handling functions and variable start here
