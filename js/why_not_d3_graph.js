@@ -53,7 +53,7 @@ $(function() {
   let barHeight;
 
   function createLargeBar() {
-    console.log('createLargeBar');
+    // console.log('createLargeBar');
 
     xScale = d3.scaleLinear().domain([0, max_val]).range([0, LARGE_WIDTH - LABEL_WIDTH]);
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, LARGE_HEIGHT]);
@@ -99,10 +99,13 @@ $(function() {
       .attr('x', function(d, i) { return LABEL_WIDTH + xScale(parseFloat(d.percent)) - 10 })
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'end')
-      .attr('fill', 'white')
+      .style('fill', 'white')
       .attr('font-size', 12)
-      .attr('opacity', 1)
-      .text(function(d) { return d.percent + "%" });
+      .attr('opacity', 0)
+      .text(function(d) { return d.percent + "%" })
+      .transition()
+        .delay(function(d, i) { return 100 * (i + 1) + WHY_NOT_TRANSITION_MS })
+        .attr('opacity', 1);
 
     icon
       .attr('xlink:href', function(d) { return 'img/why_not/' + d.svg_name + '.svg' })
@@ -110,7 +113,7 @@ $(function() {
   }
 
   function destroyBar() {
-    console.log('destroyBar');
+    // console.log('destroyBar');
 
     reasonLabel.attr('opacity', 0);
     rect.attr('width', 0);
@@ -119,7 +122,7 @@ $(function() {
   }
 
   function largeBar() {
-    console.log('largeBar');
+    // console.log('largeBar');
 
     xScale = d3.scaleLinear().domain([0, max_val]).range([0, LARGE_WIDTH - LABEL_WIDTH]);
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, LARGE_HEIGHT]);
@@ -153,7 +156,7 @@ $(function() {
   }
 
   function smallBar() {
-    console.log('smallBar');
+    // console.log('smallBar');
 
     yScale = d3.scaleLinear().domain([0, num_rows]).range([0, SMALL_HEIGHT]);
     barHeight = SMALL_HEIGHT/num_rows - 5;
@@ -188,7 +191,7 @@ $(function() {
 
   function updateReasonState(highlightReasons = [], disableReasons = [], enableReasons = []) {
     return function() {
-      console.log('updateReasonState');
+      // console.log('updateReasonState');
       d3.select('#whyNotChart').selectAll('g').each(
         function(d) {
           if (highlightReasons.indexOf(d.reason) > -1) {
@@ -284,7 +287,7 @@ $(function() {
   }
 
   function makeFixedStart() {
-    console.log('makeFixedStart');
+    // console.log('makeFixedStart');
     $("#whyNotChartFillerStart").css('height', '600px');
     chart.style('position', 'fixed');
     chart.style('top', '100px');
@@ -292,13 +295,13 @@ $(function() {
   }
 
   function makeStaticStart() {
-    console.log('makeStaticStart');
+    // console.log('makeStaticStart');
     chart.style('position', 'static');
     $("#whyNotChartFillerStart").css('height', '0px');
   }
 
   function makeFixedEnd() {
-    console.log('makeFixedEnd');
+    // console.log('makeFixedEnd');
 
     chart
       .attr('height', LARGE_HEIGHT)
@@ -312,7 +315,7 @@ $(function() {
   }
 
   function makeStaticEnd() {
-    console.log('makeStaticEnd');
+    // console.log('makeStaticEnd');
 
     chart
       .attr('height', (SMALL_HEIGHT + 60) + 'px')
@@ -326,7 +329,7 @@ $(function() {
     return new Waypoint({
       element: document.getElementById(triggerElmt),
       handler: function(direction) {
-        console.log('Triggering for ', triggerElmt, direction);
+        // console.log('Triggering for ', triggerElmt, direction);
         direction == 'down' ? downFunc() : upFunc();
       },
       offset: offset

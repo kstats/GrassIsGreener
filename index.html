@@ -36,7 +36,6 @@
 
     <!-- This information is needed for GeoJSON-->
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
     <link href='https://unpkg.com/mapbox-gl@0.43.0/dist/mapbox-gl.css' rel='stylesheet' />
     <style>
@@ -51,7 +50,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Where the Grass is Greener</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +60,7 @@
               <a class="nav-link js-scroll-trigger" href="#individualBenefits">Individual Benefits</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#whyNot">Why not go Oustide?</a>
+              <a class="nav-link js-scroll-trigger" href="#whyNot">Why Not Go Oustide?</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#Community">Community Benefits</a>
@@ -85,7 +84,7 @@
             Going outdoors is good for you and great for your community, 
             the environment, and the world. Scroll down to learn more!
             </p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#individualBenefits">Find Out More</a>
           </div>
         </div>
       </div>
@@ -95,7 +94,7 @@
       <div class="container">
         <div class="row">
           <h2 class="section-heading">
-            The Impact of the Outdoors on Your Body
+            Going Outdoors Improves Your Insides
           </h2>
         </div> <!--close of row div-->
         <div class="row my-5">
@@ -103,15 +102,13 @@
               <div id="games">
                 <h3 class="mb-3" style="text-align:left">Going Outdoors Lowers Stress and Boosts Your Immune System</h3>
                 <p id="ex1" class="text-muted mb-3">
-                    Several studies have demonstrated that forest bathing enhances immune 
-                    functions. Subjects who took a three-day trip to a forest area showed 
-                    enhanced immune functions, as evidenced by an increase in natural killer 
-                    (NK) cell activity and the levels of intracellular granulysin, perforin, and 
-                    granzymes A and B [6]
+                    Several studies have shown that <span class="highlighted-green">forest bathing enhances immune 
+                    functions</span> by an increase in natural killer (NK) cell activity and the levels of 
+                    intracellular proteins that are associated with healthy lifestyles [6].
                 </p>
                 <p id="ex1" class="text-muted mb-3">
-                  A higher level of stress — as evidenced by an elevated serum cortisol level - was 
-                  observed in subjects exposed to the urban environment than in the forest group</p>
+                  Walking in <span class="highlighted-red">the urban environment resulted in a higher level of stress</span> — 
+                  as evidenced by an elevated serum cortisol level - than in the forest group.</p>
               </div> <!--Close of games div"-->
             </div>  <!--Close of col-lg-12 text-center-->
             <div id="outdoorImpact">
@@ -131,16 +128,16 @@
             <div class="row my-5">
                 <div class="offset-4 col-8">
                   <div id="games">
-                    <h3 class="mb-3">Outdoor Activities Improve Happiness and Life Satisfaction</h3>
+                    <h3 class="mb-3">Being Outdoors Increases Mindfulness</h3>
                     <p class="text-muted mb-3">
-                    Experiences outdoors can increase self-efficacy, mindfulness and subjective 
-                    well-being. Furthermore, time spent outdoors may reduce feelings of time 
+                    Outdoor experiences can <span class="highlighted-green">increase self-efficacy, mindfulness and subjective 
+                    well-being.</span> Furthermore, time spent outdoors may reduce feelings of time 
                     pressure and mental stress.[4]
                     </p>
                   </div> <!--Close of games div"-->
                 </div>  <!--Close of offset-4 col-8-->
-              <div id="mental-health">
-                <div width="100%">
+              <div id="mental-health" style="max-height:300px">
+                <div width="100%"">
                   <svg id="mind-wrapper" height="100" width="100">
                       <defs>
                           <clipPath id="clipPathMind" >
@@ -234,7 +231,7 @@
                 San Franciso, like many cities, is full of parks that are easily accessible by public transit or even just walking. Check out the map below to find a park in SF near you!
               </p>
 
-              <div id='map'></div>
+              <div id='map' style="position:relative;"></div>
               <script>
 
                 // javascript code goes here!!!
@@ -336,57 +333,56 @@
         <img id='tree' class="img-tree" src="img/community/tree.png" alt="">
       </div>
 
-
-      <div id="intro" class="commText">
-        <h2 class="section-heading">
-          Community Impact
-        </h2>
-        <p class="text-muted mb-3">
-          Parks and green spaces also have a large, positive imact on the community.  <br><br> <b>Imagine a world without parks.</b>  <br><br> In addition to the lack of individual recreation space, harmful particlates in the atmosphere are more numerous, water is not effectively collected by plants, community cohesion is low, and the health care costs to a city are high.  <br><br>  Now, let's see what the impact of certain parts of parks have on a community.
-       </p>
-      </div>
-      <br><br><br><br><br><br><br><br><br><br>
-      <div id="co2" class="commText">
-        <h3 class="mb-3">Absorbtion of Harmful Particles</h3>
-        <p class="text-muted mb-3">
-        Trees and shrubs found in parks absorb harmful particles such as CO2 and ozone.  For the city of San Francisco, the estimated tons of each particle removed is:<br><b>Carbon Dioxide:</b> 2,246 <br><b>Nitrogen Dioxide:</b> 20,283<br><b>Ozone:</b> 74,854<br><b>Particulate Matter:</b> 29,357<br><b>Sulfur Dioxide:</b> 3,957<br>
-      </p>
-      </div>
-      <br><br><br><br><br><br><br><br><br><br>
-      <div id="water" class="commText">
-        <h3 class="mb-3">Improved Stormwater Retention</h3>
-        <p class="text-muted mb-3">
-          Park vegetation also helps increase stormwater retention, which helps prevent flooding and erosion.  The city of San Francisco saves 134,881,603 cubic feet of runoff from parks annually.  That's <b>30%</b> of its total annual rainfall!
-       </p>
-      </div>      
-      <br><br><br><br><br><br><br><br><br><br>
-      <div id="health" class="commText">
-        <h3 class="mb-3">Health Care Cost</h3>
-        <p class="text-muted mb-3">
-          Parks also help encourage citizen to remain healthy and active.  The average health care difference of an active and an inactive person in San Francisco under 65 is $322.  But, once a person is over 65, this difference is magnified to $644.  Approximately 140,000 San Franciscans are active in parks.  This makes the annual value of health benefits of parks $49,221,673.
+        <div id="intro" class="commText">
+          <h2 class="section-heading">
+            Community Impact
+          </h2>
+          <p class="text-muted mb-3">
+            Parks and green spaces also have a large, positive imact on the community.  <br><br> <b>Imagine a world without parks.</b>  <br><br> In addition to the lack of individual recreation space, harmful particlates in the atmosphere are more numerous, water is not effectively collected by plants, community cohesion is low, and the health care costs to a city are high.  <br><br>  Now, let's see what the impact of certain parts of parks have on a community.
+         </p>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="co2" class="commText">
+          <h3 class="mb-3">Absorbtion of Harmful Particles</h3>
+          <p class="text-muted mb-3">
+          Trees and shrubs found in parks absorb harmful particles such as CO2 and ozone.  For the city of San Francisco, the estimated tons of each particle removed is:<br><b>Carbon Dioxide:</b> 2,246 <br><b>Nitrogen Dioxide:</b> 20,283<br><b>Ozone:</b> 74,854<br><b>Particulate Matter:</b> 29,357<br><b>Sulfur Dioxide:</b> 3,957<br>
         </p>
-      </div>
-      <br><br><br><br><br><br><br><br><br><br>
-      <div id="comm" class="commText">
-        <h3 class="mb-3">Community Cohesion</h3>
-        <p class="text-muted mb-3">
-          Parks are also a source of community cohesion within a local community.  They allow for a free, local place for community groups to gather. Additionally, many citizens volunteer to improve a park, which can result in heightened social capital, especially in neighborhoods without safe public spaces.
-        </p>
-      </div>
-      <br><br><br><br><br><br><br><br><br><br>
-      <div id="conclusion" class="commText">
-        <h3 class="mb-3">
-          Parks provide many benefits to communities other than individual usage benefits.  Our community is now thriving, thanks to parks!  
-       </h3>
-      </div>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="water" class="commText">
+          <h3 class="mb-3">Improved Stormwater Retention</h3>
+          <p class="text-muted mb-3">
+            Park vegetation also helps increase stormwater retention, which helps prevent flooding and erosion.  The city of San Francisco saves 134,881,603 cubic feet of runoff from parks annually.  That's <b>30%</b> of its total annual rainfall!
+         </p>
+        </div>      
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="health" class="commText">
+          <h3 class="mb-3">Health Care Cost</h3>
+          <p class="text-muted mb-3">
+            Parks also help encourage citizen to remain healthy and active.  The average health care difference of an active and an inactive person in San Francisco under 65 is $322.  But, once a person is over 65, this difference is magnified to $644.  Approximately 140,000 San Franciscans are active in parks.  This makes the annual value of health benefits of parks $49,221,673.
+          </p>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="comm" class="commText">
+          <h3 class="mb-3">Community Cohesion</h3>
+          <p class="text-muted mb-3">
+            Parks are also a source of community cohesion within a local community.  They allow for a free, local place for community groups to gather. Additionally, many citizens volunteer to improve a park, which can result in heightened social capital, especially in neighborhoods without safe public spaces.
+          </p>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+        <div id="conclusion" class="commText">
+          <h3 class="mb-3">
+            Parks provide many benefits to communities other than individual usage benefits.  Our community is now thriving, thanks to parks!  
+         </h3>
+        </div>
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-      
+      </div>
     </section>
 
 

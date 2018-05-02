@@ -107,7 +107,7 @@
 
 .container-moving{
 	position: fixed;
-	left: 500px;
+	left: 600px;
 	top:0px;
 	z-index:0;
 	height:600px;
@@ -139,4 +139,15 @@
 
 p#ex1 {
     max-width: 650px;
+}
+
+/* For highlighting spans of text in the page */
+.highlighted-green {
+	background-color: rgba(201,229,99,.5);
+	color: #1D2900;
+}
+
+.highlighted-red {
+	background-color: rgba(255,140,174,.5);
+	color: #B01E49;
 }
