@@ -71,7 +71,7 @@
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead masthead-top text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
@@ -389,16 +389,22 @@
            </h3>
           </div>
 
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       </div>
     </section>
 
-
+    <header class="masthead masthead-bottom text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase" style="color:white">
+              <strong>So...What's Your Next Adventure?</strong>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
 
      <!-- Waypoints for scrollytelling -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
@@ -586,6 +592,39 @@
       };
       //triger these functions on page scroll
       new comm_scroll('comm', '75%');//#, water, intro);
+
+      function reverse_section_scroll(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+            if (direction == 'down'){
+              console.log("got it final down")
+               $("#person").animate({opacity:0});
+               $("#bench").animate({opacity:0});
+               $("#stars2").animate({opacity:0});
+               $("#stars").animate({opacity:0});
+               $("#rain").animate({opacity:0});
+               $("#water_pic").animate({opacity:0});
+               $("#tulip").animate({opacity:0});
+               $("#tree").animate({opacity:0});
+            } else {
+              console.log("got it final up")
+               $("#person").animate({opacity:1});
+               $("#bench").animate({opacity:1});
+               $("#stars2").animate({opacity:1});
+               $("#stars").animate({opacity:1});
+               $("#rain").animate({opacity:1});
+               $("#water_pic").animate({opacity:1});
+               $("#tulip").animate({opacity:1});
+               $("#tree").animate({opacity:1});
+            }
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+
+      reverse_section_scroll('conclusion', '10%');
     </script>
 
     <!-- Bootstrap core JavaScript <script src="vendor/jquery/jquery.min.js"></script> -->
