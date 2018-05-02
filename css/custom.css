@@ -147,9 +147,11 @@ p#ex1 {
 
 /* For highlighting spans of text in the page */
 .highlighted-green {
-    background-color: rgba(201,229,99,.5);
+	background-color: rgba(201,229,99,.5);
+	color: #1D2900;
 }
 
 .highlighted-red {
-    background-color: rgba(255,140,174,.5);
+	background-color: rgba(255,140,174,.5);
+	color: #B01E49;
 }
