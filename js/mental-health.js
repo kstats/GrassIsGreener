@@ -1,6 +1,6 @@
 $(function() {
 var width = 960,
-    height = 250,
+    height = 300,
     scaleFactor = 3.5;
 
     var wrapper = d3.select("#mind-wrapper").attr("width", width).attr("height", height); // set size of background rectangle
@@ -27,7 +27,7 @@ var width = 960,
 			//SVG container
 			var svg = d3.select('#mental-health')
                 .append("svg")
-                .attr("transform", "translate(" +0+ "," + -400 + ")")
+                .attr("transform", "translate(" +0+ "," + -450 + ")")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
 				.append("g")
