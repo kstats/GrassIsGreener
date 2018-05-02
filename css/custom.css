@@ -4,7 +4,7 @@
 	left: 250px; 
 	top:300px;
 	z-index: 2;
-	height:200px;
+	height:250px;
 	width:150px;
 }
 
@@ -13,8 +13,14 @@
 	left: 350px; 
 	top:100px;
 	z-index: 2;
-	height:100px;
+	height:150px;
 	width:250px;
+}
+
+.img-co2-small{
+	position: static; 
+	height:30px;
+	width:50px;
 }
 
 .img-rain{
