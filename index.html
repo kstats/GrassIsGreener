@@ -381,13 +381,13 @@
           <img id='co2_img' class="img-co2" src="img/community/co2.png" style="visibility: visible;" alt="">
           <img id='wilted' class="img-wilted" src="img/community/wilted.png" alt="">
           
-          <img id='bench' class="img-bench" src="img/community/bench.png" alt="">
-          <img id='stars' class="img-stars" src="img/community/stars.png" alt="">
-          <img id='stars2' class="img-stars2" src="img/community/stars.png" alt="">
-          <img id='tulip' class="img-tulip" src="img/community/tulip.png" alt="">
-          <img id='water_pic' class="img-water" src="img/community/water.png" alt="">
-          <img id='rain' class="img-rain" src="img/community/rain.png" alt="">
-          <img id='tree' class="img-tree" src="img/community/tree.png" alt="">
+          <img id='bench' class="img-bench" src="img/community/bench_green.png" alt="">
+          <img id='stars' class="img-stars" src="img/community/stars_green.png" alt="">
+          <img id='stars2' class="img-stars2" src="img/community/stars_green.png" alt="">
+          <img id='tulip' class="img-tulip" src="img/community/tulip_green.png" alt="">
+          <img id='water_pic' class="img-water" src="img/community/water_green.png" alt="">
+          <img id='rain' class="img-rain" src="img/community/rain_green.png" alt="">
+          <img id='tree' class="img-tree" src="img/community/tree_green.png" alt="">
         </div>
 
           <div id="intro" class="commText">
@@ -557,6 +557,8 @@
                  $("#water_pic").stop().animate({opacity:1}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
                  $("#tulip").stop().animate({opacity:1}, 3000);
+                 document.getElementById("tree").src = "./img/community/tree_grey.png";
+
              } //? func1() : func2();
              if (direction == 'up'){
                   console.log("got it 2...");
@@ -568,6 +570,7 @@
                  $("#water_pic").stop().animate({opacity:0}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
                  $("#tulip").stop().animate({opacity:0}, 3000);
+                 document.getElementById("tree").src = "./img/community/tree_green.png";
              } //? func1() : func2();
              
           }, 
@@ -589,6 +592,10 @@
                $("#wilted").stop().animate({opacity:0}, 3000);
                //document.getElementById("stars").style.visibility="visible";
                $("#stars").stop().animate({opacity:1}, 3000);
+               document.getElementById("rain").src = "./img/community/rain_grey.png";
+               document.getElementById("water_pic").src = "./img/community/water_grey.png";
+               document.getElementById("tulip").src = "./img/community/tulip_grey.png";
+
              }
              if(direction == 'up'){ //? func1() : func2();
                console.log("got it 3...");
@@ -596,6 +603,9 @@
                $("#wilted").stop().animate({opacity:1}, 3000);
                //document.getElementById("stars").style.visibility="visible";
                $("#stars").stop().animate({opacity:0}, 3000);
+               document.getElementById("rain").src = "./img/community/rain_green.png";
+               document.getElementById("water_pic").src = "./img/community/water_green.png";
+               document.getElementById("tulip").src = "./img/community/tulip_green.png";
              }
           }, 
           //start 75% from the top of the div
@@ -618,6 +628,7 @@
                $("#bench").stop().animate({opacity:1}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
               $("#stars2").stop().animate({opacity:1}, 3000);
+              document.getElementById("stars").src = "./img/community/stars_grey.png";
             }
 
             if (direction == 'up'){ //? func1() : func2();
@@ -628,6 +639,7 @@
                $("#bench").stop().animate({opacity:0}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
               $("#stars2").stop().animate({opacity:0}, 3000);
+              document.getElementById("stars").src = "./img/community/stars_green.png";
             }
           }, 
           //start 75% from the top of the div
@@ -636,6 +648,29 @@
       };
       //triger these functions on page scroll
       new comm_scroll('comm', '75%');//#, water, intro);
+
+
+      function conc_scroll(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+            if (direction == 'down'){ //? func1() : func2();
+              document.getElementById("bench").src = "./img/community/bench_grey.png";
+              document.getElementById("stars2").src = "./img/community/stars_grey.png";
+
+            }
+
+            if (direction == 'up'){ //? func1() : func2();
+              document.getElementById("bench").src = "./img/community/bench_green.png";
+              document.getElementById("stars2").src = "./img/community/stars_green.png";
+            }
+          }, 
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new conc_scroll('conclusion', '75%');//#, water, intro);
 
       function reverse_section_scroll(elmtName, offset){
         return new Waypoint({
@@ -661,7 +696,8 @@
                $("#water_pic").stop().animate({opacity:1});
                $("#tulip").stop().animate({opacity:1});
                $("#tree").stop().animate({opacity:1});
-          },
+          }
+        },
           //start 75% from the top of the div
           offset: offset
         });
