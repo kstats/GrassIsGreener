@@ -517,7 +517,7 @@
                $("#co2_img").stop().animate({opacity:0});
                $("#sadlines").stop().animate({opacity:0});
                $("#wilted").stop().animate({opacity:0});
-               document.getElementById("img_container").className = "container-static";
+               setTimeout(function(){document.getElementById("img_container").className = "container-static"},5000);
 
              }
           },
