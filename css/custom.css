@@ -157,3 +157,13 @@ p#ex1 {
 	background-color: rgba(255,140,174,.5);
 	color: #B01E49;
 }
+
+.highlighted-blue {
+	background-color: rgba(76,101,122,.5);
+	color: #083559;
+}
+
+.highlighted-light-blue {
+	background-color: rgba(170,207,242,.5);
+	color: #041D30;
+}
