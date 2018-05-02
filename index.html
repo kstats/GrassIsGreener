@@ -417,18 +417,18 @@
           handler: function(direction) {
             if (direction == 'down'){
               console.log("got it -1")
-               $("#person").animate({opacity:0});
-               $("#sadlines").animate({opacity:0});
-               $("#co2_img").animate({opacity:0});
-               $("#sadlines").animate({opacity:0});
-               $("#wilted").animate({opacity:0});
-               $("#bench").animate({opacity:0});
-               $("#stars2").animate({opacity:0});
-               $("#stars").animate({opacity:0});
-               $("#rain").animate({opacity:0});
-               $("#water_pic").animate({opacity:0});
-               $("#tulip").animate({opacity:0});
-               $("#tree").animate({opacity:0});
+               $("#person").stop().animate({opacity:0});
+               $("#sadlines").stop().animate({opacity:0});
+               $("#co2_img").stop().animate({opacity:0});
+               $("#sadlines").stop().animate({opacity:0});
+               $("#wilted").stop().animate({opacity:0});
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
             }
           },
           //start 75% from the top of the div
@@ -447,12 +447,12 @@
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-moving";
-               $("#person").animate({opacity:1}, 5000);
-               $("#sadlines").animate({opacity:1}, 5000);
-               $("#co2_img").animate({opacity:1}, 5000);
-               $("#sadlines").animate({opacity:1}, 5000);
-               $("#person").animate({opacity:1}, 5000);
-               $("#wilted").animate({opacity:1}, 5000);
+               $("#person").stop().animate({opacity:1}, 5000);
+               $("#sadlines").stop().animate({opacity:1}, 5000);
+               $("#co2_img").stop().animate({opacity:1}, 5000);
+               $("#sadlines").stop().animate({opacity:1}, 5000);
+               $("#person").stop().animate({opacity:1}, 5000);
+               $("#wilted").stop().animate({opacity:1}, 5000);
 
              }
 
@@ -460,14 +460,14 @@
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-static";
-               $("#bench").animate({opacity:0});
-               $("#stars2").animate({opacity:0});
-               $("#stars").animate({opacity:0});
-               $("#rain").animate({opacity:0});
-               $("#water_pic").animate({opacity:0});
-               $("#tulip").animate({opacity:0});
-               $("#tree").animate({opacity:0});    
-               $("#co2_img").animate({opacity:0});          
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
+               $("#co2_img").stop().animate({opacity:0});
 
              }
           },
@@ -485,11 +485,11 @@
             if (direction == 'down'){
                direction == 'down' //? func1() : func2();
                console.log("got it 1...");
-               $("#tree").animate({opacity:1}, {duration: 3000});//.style = "visibility=visible";
+               $("#tree").stop().animate({opacity:1}, {duration: 3000});//.style = "visibility=visible";
             }
             if (direction == 'up'){
                console.log("got it 1...");
-               $("#tree").animate({opacity:0}, {duration: 3000});//.style = "visibility=visible";
+               $("#tree").stop().animate({opacity:0}, {duration: 3000});//.style = "visibility=visible";
             }
           },
           //start 75% from the top of the div
@@ -506,24 +506,24 @@
              if (direction == 'down'){
                   console.log("got it 2...");
                  //document.getElementById("co2_img").style.visibility= "hidden";
-                 $("#co2_img").animate({opacity:0}, 3000);
+                 $("#co2_img").stop().animate({opacity:0}, 3000);
                  //document.getElementById("rain").style.visibility="visible";
-                 $("#rain").animate({opacity:1}, 3000);
+                 $("#rain").stop().animate({opacity:1}, 3000);
                  //document.getElementById("water_pic").style.visibility="visible";
-                 $("#water_pic").animate({opacity:1}, 3000);
+                 $("#water_pic").stop().animate({opacity:1}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
-                 $("#tulip").animate({opacity:1}, 3000);
+                 $("#tulip").stop().animate({opacity:1}, 3000);
              } //? func1() : func2();
              if (direction == 'up'){
                   console.log("got it 2...");
                  //document.getElementById("co2_img").style.visibility= "hidden";
-                 $("#co2_img").animate({opacity:1}, 3000);
+                 $("#co2_img").stop().animate({opacity:1}, 3000);
                  //document.getElementById("rain").style.visibility="visible";
-                 $("#rain").animate({opacity:0}, 3000);
+                 $("#rain").stop().animate({opacity:0}, 3000);
                  //document.getElementById("water_pic").style.visibility="visible";
-                 $("#water_pic").animate({opacity:0}, 3000);
+                 $("#water_pic").stop().animate({opacity:0}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
-                 $("#tulip").animate({opacity:0}, 3000);
+                 $("#tulip").stop().animate({opacity:0}, 3000);
              } //? func1() : func2();
              
           }, 
@@ -542,16 +542,16 @@
              if(direction == 'down'){ //? func1() : func2();
                console.log("got it 3...");
                //document.getElementById("wilted").style.visibility= "hidden";
-               $("#wilted").animate({opacity:0}, 3000);
+               $("#wilted").stop().animate({opacity:0}, 3000);
                //document.getElementById("stars").style.visibility="visible";
-               $("#stars").animate({opacity:1}, 3000);
+               $("#stars").stop().animate({opacity:1}, 3000);
              }
              if(direction == 'up'){ //? func1() : func2();
                console.log("got it 3...");
                //document.getElementById("wilted").style.visibility= "hidden";
-               $("#wilted").animate({opacity:1}, 3000);
+               $("#wilted").stop().animate({opacity:1}, 3000);
                //document.getElementById("stars").style.visibility="visible";
-               $("#stars").animate({opacity:0}, 3000);
+               $("#stars").stop().animate({opacity:0}, 3000);
              }
           }, 
           //start 75% from the top of the div
@@ -569,21 +569,21 @@
             if (direction == 'down'){ //? func1() : func2();
                console.log("got it 4...");
                //document.getElementById("sadlines").style.visibility= "hidden";
-               $("#sadlines").animate({opacity:0}, 3000);
+               $("#sadlines").stop().animate({opacity:0}, 3000);
                //document.getElementById("bench").style.visibility="visible";
-               $("#bench").animate({opacity:1}, 3000);
+               $("#bench").stop().animate({opacity:1}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
-              $("#stars2").animate({opacity:1}, 3000);
+              $("#stars2").stop().animate({opacity:1}, 3000);
             }
 
             if (direction == 'up'){ //? func1() : func2();
                console.log("got it 4...");
                //document.getElementById("sadlines").style.visibility= "hidden";
-               $("#sadlines").animate({opacity:1}, 3000);
+               $("#sadlines").stop().animate({opacity:1}, 3000);
                //document.getElementById("bench").style.visibility="visible";
-               $("#bench").animate({opacity:0}, 3000);
+               $("#bench").stop().animate({opacity:0}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
-              $("#stars2").animate({opacity:0}, 3000);
+              $("#stars2").stop().animate({opacity:0}, 3000);
             }
           }, 
           //start 75% from the top of the div
@@ -599,25 +599,24 @@
           handler: function(direction) {
             if (direction == 'down'){
               console.log("got it final down")
-               $("#person").animate({opacity:0});
-               $("#bench").animate({opacity:0});
-               $("#stars2").animate({opacity:0});
-               $("#stars").animate({opacity:0});
-               $("#rain").animate({opacity:0});
-               $("#water_pic").animate({opacity:0});
-               $("#tulip").animate({opacity:0});
-               $("#tree").animate({opacity:0});
+               $("#person").stop().animate({opacity:0});
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
             } else {
               console.log("got it final up")
-               $("#person").animate({opacity:1});
-               $("#bench").animate({opacity:1});
-               $("#stars2").animate({opacity:1});
-               $("#stars").animate({opacity:1});
-               $("#rain").animate({opacity:1});
-               $("#water_pic").animate({opacity:1});
-               $("#tulip").animate({opacity:1});
-               $("#tree").animate({opacity:1});
-            }
+               $("#person").stop().animate({opacity:1});
+               $("#bench").stop().animate({opacity:1});
+               $("#stars2").stop().animate({opacity:1});
+               $("#stars").stop().animate({opacity:1});
+               $("#rain").stop().animate({opacity:1});
+               $("#water_pic").stop().animate({opacity:1});
+               $("#tulip").stop().animate({opacity:1});
+               $("#tree").stop().animate({opacity:1});
           },
           //start 75% from the top of the div
           offset: offset
