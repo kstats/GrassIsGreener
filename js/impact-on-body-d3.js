@@ -220,7 +220,6 @@ function redraw() {
 // Do something fun with this, e.g. add particles on mousemove
 function mousemove() {
     var point = d3.mouse(this);
-    console.log("mousemove...: point:" + point);
     add_particles(point[0], point[1], 2);
 }
 
@@ -241,9 +240,7 @@ function clickCity() {
 function click(translateDelta) {
     var x = get_random_number(MIN_X, MAX_X);
     var y = get_random_number(MIN_Y, MAX_Y);
-    console.log("x: " + x + ", y: " + y);
     add_particles(x, y, 5);
-    console.log("moving the person from" + curX + " to " + curX + translateDelta)
     curX = curX + translateDelta
     person.attr("transform", "scale(" + scaleFactor + "), translate("+curX+", " + curY+")")
     
