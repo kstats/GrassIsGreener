@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Info 247: Information Visualization course at UC Berkeley</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +32,7 @@
     <script src="js/why_not_d3_graph.js"></script>
     <script src="js/impact-on-body-d3.js"></script>
     <script src="js/mental-health.js"></script>
+    <script src="js/vision.js"></script>
 
 
     <!-- This information is needed for GeoJSON-->
@@ -70,7 +71,7 @@
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead masthead-top text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
@@ -94,11 +95,11 @@
       <div class="container">
         <div class="row">
           <h2 class="section-heading">
-            Going Outdoors Improves Your Insides
+            Impact of Outdoor Activity on Your Body and Mind
           </h2>
         </div> <!--close of row div-->
         <div class="row my-5">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12">
               <div id="games">
                 <h3 class="mb-3" style="text-align:left">Going Outdoors Lowers Stress and Boosts Your Immune System</h3>
                 <p id="ex1" class="text-muted mb-3">
@@ -109,9 +110,12 @@
                 <p id="ex1" class="text-muted mb-3">
                   Walking in <span class="highlighted-red">the urban environment resulted in a higher level of stress</span> — 
                   as evidenced by an elevated serum cortisol level - than in the forest group.</p>
+                <p id="ex1" class="text-muted mb-3">
+                  <b>Click</b> on the <span class="highlighted-green">forest</span> or <span class="highlighted-red">city</span>
+                  to see what happens to the person in both places. </p>
               </div> <!--Close of games div"-->
             </div>  <!--Close of col-lg-12 text-center-->
-            <div id="outdoorImpact">
+            <div id="outdoorImpact" class="mx-auto">
                 <svg id="sparkle-wrapper" height="100" width="100">
                     <defs>
                         <clipPath id="clipPath" >
@@ -137,7 +141,7 @@
                   </div> <!--Close of games div"-->
                 </div>  <!--Close of offset-4 col-8-->
               <div id="mental-health" style="max-height:300px">
-                <div width="100%"">
+                <div width="100%">
                   <svg id="mind-wrapper" height="100" width="100">
                       <defs>
                           <clipPath id="clipPathMind" >
@@ -154,9 +158,6 @@
             </div> <!--close of mental-health div-->
         </div> <!--Close of row my-5 div-->
         <div class="row my-5">
-            <div id="vision" class="col-4">
-                <img src="img/vision/noun_169904.svg" ></img>
-            </div>
             <div class="col-8">
               <div id="games">
                 <h3 class="mb-3">Outdoor Activities Improve Vision</h3>
@@ -166,6 +167,11 @@
                 </p>
               </div> <!--Close of games div"-->
             </div>  <!--Close of offset-4 col-8-->
+            <div id="vision" class="col-4">
+                <svg>
+                 <image xlink:href="img/vision/noun_169904.svg" fill="#1D2900"></image>
+                </svg>
+              </div>
 
           </div> <!--Close of row my-5-->
       </div> <!--Close of container div-->
@@ -178,7 +184,7 @@
           <h2 class="section-heading">
             Why Not Go Outside?
           </h2>
-          <h5 class="mb-2">
+          <h5 class="mb-2 my-5">
             The Outdoor Industry Association ran a survey to understand why people choose not to participate in outdoor recreation activites. Below were the top responses:
           </h5>
           <p class="text-muted mb-2">Participants were able to select multiple responses.</p>
@@ -365,77 +371,84 @@
     </section>
 
     <section id="Community">
-      <!--<div id="communityFiller" class="fillerFixed">
-            &nbsp;
-      </div>-->
-      <div id="img_container" class="container-static">
-        <img id='person' class="img-person" src="img/community/person.png" alt="">
-        <img id='sadlines' class="img-sadlines" src="img/community/sadlines.png" alt="">
-        <img id='co2_img' class="img-co2" src="img/community/co2.png" style="visibility: visible;" alt="">
-        <img id='wilted' class="img-wilted" src="img/community/wilted.png" alt="">
-        
-        <img id='bench' class="img-bench" src="img/community/bench.png" alt="">
-        <img id='stars' class="img-stars" src="img/community/stars.png" alt="">
-        <img id='stars2' class="img-stars2" src="img/community/stars.png" alt="">
-        <img id='tulip' class="img-tulip" src="img/community/tulip.png" alt="">
-        <img id='water_pic' class="img-water" src="img/community/water.png" alt="">
-        <img id='rain' class="img-rain" src="img/community/rain.png" alt="">
-        <img id='tree' class="img-tree" src="img/community/tree.png" alt="">
-      </div>
-
-        <div id="intro" class="commText">
-          <h2 class="section-heading">
-            Community Impact
-          </h2>
-          <p class="text-muted mb-3">
-            Parks and green spaces also have a large, positive imact on the community.  <br><br> <b>Imagine a world without parks.</b>  <br><br> In addition to the lack of individual recreation space, harmful particlates in the atmosphere are more numerous, water is not effectively collected by plants, community cohesion is low, and the health care costs to a city are high.  <br><br>  Now, let's see what the impact of certain parts of parks have on a community.
-         </p>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <div id="co2" class="commText">
-          <h3 class="mb-3">Absorbtion of Harmful Particles</h3>
-          <p class="text-muted mb-3">
-          Trees and shrubs found in parks absorb harmful particles such as CO2 and ozone.  For the city of San Francisco, the estimated tons of each particle removed is:<br><b>Carbon Dioxide:</b> 2,246 <br><b>Nitrogen Dioxide:</b> 20,283<br><b>Ozone:</b> 74,854<br><b>Particulate Matter:</b> 29,357<br><b>Sulfur Dioxide:</b> 3,957<br>
-        </p>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <div id="water" class="commText">
-          <h3 class="mb-3">Improved Stormwater Retention</h3>
-          <p class="text-muted mb-3">
-            Park vegetation also helps increase stormwater retention, which helps prevent flooding and erosion.  The city of San Francisco saves 134,881,603 cubic feet of runoff from parks annually.  That's <b>30%</b> of its total annual rainfall!
-         </p>
-        </div>      
-        <br><br><br><br><br><br><br><br><br><br>
-        <div id="health" class="commText">
-          <h3 class="mb-3">Health Care Cost</h3>
-          <p class="text-muted mb-3">
-            Parks also help encourage citizen to remain healthy and active.  The average health care difference of an active and an inactive person in San Francisco under 65 is $322.  But, once a person is over 65, this difference is magnified to $644.  Approximately 140,000 San Franciscans are active in parks.  This makes the annual value of health benefits of parks $49,221,673.
-          </p>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <div id="comm" class="commText">
-          <h3 class="mb-3">Community Cohesion</h3>
-          <p class="text-muted mb-3">
-            Parks are also a source of community cohesion within a local community.  They allow for a free, local place for community groups to gather. Additionally, many citizens volunteer to improve a park, which can result in heightened social capital, especially in neighborhoods without safe public spaces.
-          </p>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <div id="conclusion" class="commText">
-          <h3 class="mb-3">
-            Parks provide many benefits to communities other than individual usage benefits.  Our community is now thriving, thanks to parks!  
-         </h3>
+      <div class="container">
+        <!--<div id="communityFiller" class="fillerFixed">
+              &nbsp;
+        </div>-->
+        <div id="img_container" class="container-static">
+          <img id='person' class="img-person" src="img/community/person.png" alt="">
+          <img id='sadlines' class="img-sadlines" src="img/community/sadlines.png" alt="">
+          <img id='co2_img' class="img-co2" src="img/community/co2.png" style="visibility: visible;" alt="">
+          <img id='wilted' class="img-wilted" src="img/community/wilted.png" alt="">
+          
+          <img id='bench' class="img-bench" src="img/community/bench.png" alt="">
+          <img id='stars' class="img-stars" src="img/community/stars.png" alt="">
+          <img id='stars2' class="img-stars2" src="img/community/stars.png" alt="">
+          <img id='tulip' class="img-tulip" src="img/community/tulip.png" alt="">
+          <img id='water_pic' class="img-water" src="img/community/water.png" alt="">
+          <img id='rain' class="img-rain" src="img/community/rain.png" alt="">
+          <img id='tree' class="img-tree" src="img/community/tree.png" alt="">
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div id="intro" class="commText">
+            <h2 class="section-heading">
+              Community Impact
+            </h2>
+            <p class="text-muted mb-3 my-5">
+              Parks and green spaces also have a large, positive imact on the community.  <br><br> <b>Imagine a world without parks.</b>  <br><br> In addition to the lack of individual recreation space, harmful particlates in the atmosphere are more numerous, water is not effectively collected by plants, community cohesion is low, and the health care costs to a city are high.  <br><br>  Now, let's see what the impact of certain parts of parks have on a community.
+           </p>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br>
+          <div id="co2" class="commText">
+            <h3 class="mb-3">Absorbtion of Harmful Particles</h3>
+            <p class="text-muted mb-3">
+            Trees and shrubs found in parks absorb harmful particles such as CO2 and ozone.  For the city of San Francisco, the estimated tons of each particle removed is:<br><b>Carbon Dioxide:</b> 2,246 <br><b>Nitrogen Dioxide:</b> 20,283<br><b>Ozone:</b> 74,854<br><b>Particulate Matter:</b> 29,357<br><b>Sulfur Dioxide:</b> 3,957<br>
+          </p>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br>
+          <div id="water" class="commText">
+            <h3 class="mb-3">Improved Stormwater Retention</h3>
+            <p class="text-muted mb-3">
+              Park vegetation also helps increase stormwater retention, which helps prevent flooding and erosion.  The city of San Francisco saves 134,881,603 cubic feet of runoff from parks annually.  That's <b>30%</b> of its total annual rainfall!
+           </p>
+          </div>      
+          <br><br><br><br><br><br><br><br><br><br>
+          <div id="health" class="commText">
+            <h3 class="mb-3">Health Care Cost</h3>
+            <p class="text-muted mb-3">
+              Parks also help encourage citizen to remain healthy and active.  The average health care difference of an active and an inactive person in San Francisco under 65 is $322.  But, once a person is over 65, this difference is magnified to $644.  Approximately 140,000 San Franciscans are active in parks.  This makes the annual value of health benefits of parks $49,221,673.
+            </p>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br>
+          <div id="comm" class="commText">
+            <h3 class="mb-3">Community Cohesion</h3>
+            <p class="text-muted mb-3">
+              Parks are also a source of community cohesion within a local community.  They allow for a free, local place for community groups to gather. Additionally, many citizens volunteer to improve a park, which can result in heightened social capital, especially in neighborhoods without safe public spaces.
+            </p>
+          </div>
+          <br><br><br><br><br><br><br><br><br><br>
+          <div id="conclusion" class="commText">
+            <h3 class="mb-3">
+              Parks provide many benefits to communities other than individual usage benefits.  Our community is now thriving, thanks to parks!  
+           </h3>
+          </div>
+
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       </div>
     </section>
 
-
+    <header class="masthead masthead-bottom text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase" style="color:white">
+              <strong>So...What's Your Next Adventure?</strong>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
 
      <!-- Waypoints for scrollytelling -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
@@ -448,18 +461,18 @@
           handler: function(direction) {
             if (direction == 'down'){
               console.log("got it -1")
-               $("#person").animate({opacity:0});
-               $("#sadlines").animate({opacity:0});
-               $("#co2_img").animate({opacity:0});
-               $("#sadlines").animate({opacity:0});
-               $("#wilted").animate({opacity:0});
-               $("#bench").animate({opacity:0});
-               $("#stars2").animate({opacity:0});
-               $("#stars").animate({opacity:0});
-               $("#rain").animate({opacity:0});
-               $("#water_pic").animate({opacity:0});
-               $("#tulip").animate({opacity:0});
-               $("#tree").animate({opacity:0});
+               $("#person").stop().animate({opacity:0});
+               $("#sadlines").stop().animate({opacity:0});
+               $("#co2_img").stop().animate({opacity:0});
+               $("#sadlines").stop().animate({opacity:0});
+               $("#wilted").stop().animate({opacity:0});
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
             }
           },
           //start 75% from the top of the div
@@ -478,12 +491,12 @@
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-moving";
-               $("#person").animate({opacity:1}, 5000);
-               $("#sadlines").animate({opacity:1}, 5000);
-               $("#co2_img").animate({opacity:1}, 5000);
-               $("#sadlines").animate({opacity:1}, 5000);
-               $("#person").animate({opacity:1}, 5000);
-               $("#wilted").animate({opacity:1}, 5000);
+               $("#person").stop().animate({opacity:1}, 5000);
+               $("#sadlines").stop().animate({opacity:1}, 5000);
+               $("#co2_img").stop().animate({opacity:1}, 5000);
+               $("#sadlines").stop().animate({opacity:1}, 5000);
+               $("#person").stop().animate({opacity:1}, 5000);
+               $("#wilted").stop().animate({opacity:1}, 5000);
 
              }
 
@@ -491,14 +504,14 @@
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-static";
-               $("#bench").animate({opacity:0});
-               $("#stars2").animate({opacity:0});
-               $("#stars").animate({opacity:0});
-               $("#rain").animate({opacity:0});
-               $("#water_pic").animate({opacity:0});
-               $("#tulip").animate({opacity:0});
-               $("#tree").animate({opacity:0});    
-               $("#co2_img").animate({opacity:0});          
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
+               $("#co2_img").stop().animate({opacity:0});
 
              }
           },
@@ -507,7 +520,7 @@
         });
       };
       //triger these functions on page scroll
-      new scroll('intro', '100%');//#, water, intro);
+      new scroll('intro', '250px');//#, water, intro);
 
       function co2_scroll(elmtName, offset){
         return new Waypoint({
@@ -516,11 +529,11 @@
             if (direction == 'down'){
                direction == 'down' //? func1() : func2();
                console.log("got it 1...");
-               $("#tree").animate({opacity:1}, {duration: 3000});//.style = "visibility=visible";
+               $("#tree").stop().animate({opacity:1}, {duration: 3000});//.style = "visibility=visible";
             }
             if (direction == 'up'){
                console.log("got it 1...");
-               $("#tree").animate({opacity:0}, {duration: 3000});//.style = "visibility=visible";
+               $("#tree").stop().animate({opacity:0}, {duration: 3000});//.style = "visibility=visible";
             }
           },
           //start 75% from the top of the div
@@ -537,24 +550,24 @@
              if (direction == 'down'){
                   console.log("got it 2...");
                  //document.getElementById("co2_img").style.visibility= "hidden";
-                 $("#co2_img").animate({opacity:0}, 3000);
+                 $("#co2_img").stop().animate({opacity:0}, 3000);
                  //document.getElementById("rain").style.visibility="visible";
-                 $("#rain").animate({opacity:1}, 3000);
+                 $("#rain").stop().animate({opacity:1}, 3000);
                  //document.getElementById("water_pic").style.visibility="visible";
-                 $("#water_pic").animate({opacity:1}, 3000);
+                 $("#water_pic").stop().animate({opacity:1}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
-                 $("#tulip").animate({opacity:1}, 3000);
+                 $("#tulip").stop().animate({opacity:1}, 3000);
              } //? func1() : func2();
              if (direction == 'up'){
                   console.log("got it 2...");
                  //document.getElementById("co2_img").style.visibility= "hidden";
-                 $("#co2_img").animate({opacity:1}, 3000);
+                 $("#co2_img").stop().animate({opacity:1}, 3000);
                  //document.getElementById("rain").style.visibility="visible";
-                 $("#rain").animate({opacity:0}, 3000);
+                 $("#rain").stop().animate({opacity:0}, 3000);
                  //document.getElementById("water_pic").style.visibility="visible";
-                 $("#water_pic").animate({opacity:0}, 3000);
+                 $("#water_pic").stop().animate({opacity:0}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
-                 $("#tulip").animate({opacity:0}, 3000);
+                 $("#tulip").stop().animate({opacity:0}, 3000);
              } //? func1() : func2();
              
           }, 
@@ -573,16 +586,16 @@
              if(direction == 'down'){ //? func1() : func2();
                console.log("got it 3...");
                //document.getElementById("wilted").style.visibility= "hidden";
-               $("#wilted").animate({opacity:0}, 3000);
+               $("#wilted").stop().animate({opacity:0}, 3000);
                //document.getElementById("stars").style.visibility="visible";
-               $("#stars").animate({opacity:1}, 3000);
+               $("#stars").stop().animate({opacity:1}, 3000);
              }
              if(direction == 'up'){ //? func1() : func2();
                console.log("got it 3...");
                //document.getElementById("wilted").style.visibility= "hidden";
-               $("#wilted").animate({opacity:1}, 3000);
+               $("#wilted").stop().animate({opacity:1}, 3000);
                //document.getElementById("stars").style.visibility="visible";
-               $("#stars").animate({opacity:0}, 3000);
+               $("#stars").stop().animate({opacity:0}, 3000);
              }
           }, 
           //start 75% from the top of the div
@@ -600,21 +613,21 @@
             if (direction == 'down'){ //? func1() : func2();
                console.log("got it 4...");
                //document.getElementById("sadlines").style.visibility= "hidden";
-               $("#sadlines").animate({opacity:0}, 3000);
+               $("#sadlines").stop().animate({opacity:0}, 3000);
                //document.getElementById("bench").style.visibility="visible";
-               $("#bench").animate({opacity:1}, 3000);
+               $("#bench").stop().animate({opacity:1}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
-              $("#stars2").animate({opacity:1}, 3000);
+              $("#stars2").stop().animate({opacity:1}, 3000);
             }
 
             if (direction == 'up'){ //? func1() : func2();
                console.log("got it 4...");
                //document.getElementById("sadlines").style.visibility= "hidden";
-               $("#sadlines").animate({opacity:1}, 3000);
+               $("#sadlines").stop().animate({opacity:1}, 3000);
                //document.getElementById("bench").style.visibility="visible";
-               $("#bench").animate({opacity:0}, 3000);
+               $("#bench").stop().animate({opacity:0}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
-              $("#stars2").animate({opacity:0}, 3000);
+              $("#stars2").stop().animate({opacity:0}, 3000);
             }
           }, 
           //start 75% from the top of the div
@@ -623,6 +636,38 @@
       };
       //triger these functions on page scroll
       new comm_scroll('comm', '75%');//#, water, intro);
+
+      function reverse_section_scroll(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+            if (direction == 'down'){
+              console.log("got it final down")
+               $("#person").stop().animate({opacity:0});
+               $("#bench").stop().animate({opacity:0});
+               $("#stars2").stop().animate({opacity:0});
+               $("#stars").stop().animate({opacity:0});
+               $("#rain").stop().animate({opacity:0});
+               $("#water_pic").stop().animate({opacity:0});
+               $("#tulip").stop().animate({opacity:0});
+               $("#tree").stop().animate({opacity:0});
+            } else {
+              console.log("got it final up")
+               $("#person").stop().animate({opacity:1});
+               $("#bench").stop().animate({opacity:1});
+               $("#stars2").stop().animate({opacity:1});
+               $("#stars").stop().animate({opacity:1});
+               $("#rain").stop().animate({opacity:1});
+               $("#water_pic").stop().animate({opacity:1});
+               $("#tulip").stop().animate({opacity:1});
+               $("#tree").stop().animate({opacity:1});
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+
+      reverse_section_scroll('conclusion', '10%');
     </script>
 
     <!-- Bootstrap core JavaScript <script src="vendor/jquery/jquery.min.js"></script> -->

@@ -53,7 +53,7 @@ h6 {
 }
 
 section {
-  padding: 8rem 0;
+  padding: 2rem 0;
 }
 
 .section-heading {
@@ -171,12 +171,19 @@ img::-moz-selection {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("../img/header.jpg");
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+header.masthead-top {
+  background-image: url("../img/header.jpg");
+}
+
+header.masthead-bottom {
+  background-image: url("../img/header-bottom.jpg");
 }
 
 header.masthead hr {
