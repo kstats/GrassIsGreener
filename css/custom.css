@@ -17,6 +17,12 @@
 	width:250px;
 }
 
+.img-co2-small{
+	position: static; 
+	height:30px;
+	width:50px;
+}
+
 .img-rain{
 	position: absolute; 
 	left: 350px; 
