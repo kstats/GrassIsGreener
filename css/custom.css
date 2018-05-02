@@ -144,3 +144,12 @@
 p#ex1 {
     max-width: 650px;
 }
+
+/* For highlighting spans of text in the page */
+.highlighted-green {
+    background-color: rgba(201,229,99,.5);
+}
+
+.highlighted-red {
+    background-color: rgba(255,140,174,.5);
+}
