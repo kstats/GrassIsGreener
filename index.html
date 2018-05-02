@@ -99,7 +99,7 @@
           </h2>
         </div> <!--close of row div-->
         <div class="row my-5">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12">
               <div id="games">
                 <h3 class="mb-3" style="text-align:left">Going Outdoors Lowers Stress and Boosts Your Immune System</h3>
                 <p id="ex1" class="text-muted mb-3">
@@ -115,7 +115,7 @@
                   to see what happens to the person in both places. </p>
               </div> <!--Close of games div"-->
             </div>  <!--Close of col-lg-12 text-center-->
-            <div id="outdoorImpact">
+            <div id="outdoorImpact" class="mx-auto">
                 <svg id="sparkle-wrapper" height="100" width="100">
                     <defs>
                         <clipPath id="clipPath" >
@@ -184,7 +184,7 @@
           <h2 class="section-heading">
             Why Not Go Outside?
           </h2>
-          <h5 class="mb-2">
+          <h5 class="mb-2 my-5">
             The Outdoor Industry Association ran a survey to understand why people choose not to participate in outdoor recreation activites. Below were the top responses:
           </h5>
           <p class="text-muted mb-2">Participants were able to select multiple responses.</p>
@@ -311,13 +311,15 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <div id="whyNotChartFillerEnd" style="height:360px; width:100%">
+            <div id="whyNotChartFillerEnd" style="height:460px; width:100%">
               &nbsp;
             </div>
           </div>
           <div class="col-8">
             <h3>
               As you can see, it turns out there aren't that many reasons left to avoid outdoor recreational activities.
+              <br><br>
+              But even if you're not convinced to go outside for yourself, see the impact it can have on your community!
             </h3>
           </div>
         </div>
@@ -325,31 +327,29 @@
     </section>
 
     <section id="Community">
-      <div class="container">
-        <!--<div id="communityFiller" class="fillerFixed">
-              &nbsp;
-        </div>-->
-        <div id="img_container" class="container-static">
-          <img id='person' class="img-person" src="img/community/person.png" alt="">
-          <img id='sadlines' class="img-sadlines" src="img/community/sadlines.png" alt="">
-          <img id='co2_img' class="img-co2" src="img/community/co2.png" style="visibility: visible;" alt="">
-          <img id='wilted' class="img-wilted" src="img/community/wilted.png" alt="">
-          
-          <img id='bench' class="img-bench" src="img/community/bench.png" style="visibility: hidden;"alt="">
-          <img id='stars' class="img-stars" src="img/community/stars.png" style="visibility: hidden;"alt="">
-          <img id='stars2' class="img-stars2" src="img/community/stars.png" style="visibility: hidden;"alt="">
-          <img id='tulip' class="img-tulip" src="img/community/tulip.png" style="visibility: hidden;"alt="">
-          <img id='water_pic' class="img-water" src="img/community/water.png" style="visibility: hidden;"alt="">
-          <img id='rain' class="img-rain" src="img/community/rain.png" style="visibility: hidden;"alt="">
-          <img id='tree' class="img-tree" src="img/community/tree.png" style="visibility: hidden;"alt="">
-        </div>
-
+      <!--<div id="communityFiller" class="fillerFixed">
+            &nbsp;
+      </div>-->
+      <div id="img_container" class="container-static">
+        <img id='person' class="img-person" src="img/community/person.png" alt="">
+        <img id='sadlines' class="img-sadlines" src="img/community/sadlines.png" alt="">
+        <img id='co2_img' class="img-co2" src="img/community/co2.png" style="visibility: visible;" alt="">
+        <img id='wilted' class="img-wilted" src="img/community/wilted.png" alt="">
+        
+        <img id='bench' class="img-bench" src="img/community/bench.png" alt="">
+        <img id='stars' class="img-stars" src="img/community/stars.png" alt="">
+        <img id='stars2' class="img-stars2" src="img/community/stars.png" alt="">
+        <img id='tulip' class="img-tulip" src="img/community/tulip.png" alt="">
+        <img id='water_pic' class="img-water" src="img/community/water.png" alt="">
+        <img id='rain' class="img-rain" src="img/community/rain.png" alt="">
+        <img id='tree' class="img-tree" src="img/community/tree.png" alt="">
+      </div>
 
         <div id="intro" class="commText">
           <h2 class="section-heading">
             Community Impact
           </h2>
-          <p class="text-muted mb-3">
+          <p class="text-muted mb-3 my-5">
             Parks and green spaces also have a large, positive imact on the community.  <br><br> <b>Imagine a world without parks.</b>  <br><br> In addition to the lack of individual recreation space, harmful particlates in the atmosphere are more numerous, water is not effectively collected by plants, community cohesion is low, and the health care costs to a city are high.  <br><br>  Now, let's see what the impact of certain parts of parks have on a community.
          </p>
         </div>
@@ -403,6 +403,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
 
     <script>
+
+      function section_scroll(elmtName, offset){
+        return new Waypoint({
+          element: document.getElementById(elmtName),
+          handler: function(direction) {
+            if (direction == 'down'){
+              console.log("got it -1")
+               $("#person").animate({opacity:0});
+               $("#sadlines").animate({opacity:0});
+               $("#co2_img").animate({opacity:0});
+               $("#sadlines").animate({opacity:0});
+               $("#wilted").animate({opacity:0});
+               $("#bench").animate({opacity:0});
+               $("#stars2").animate({opacity:0});
+               $("#stars").animate({opacity:0});
+               $("#rain").animate({opacity:0});
+               $("#water_pic").animate({opacity:0});
+               $("#tulip").animate({opacity:0});
+               $("#tree").animate({opacity:0});
+            }
+          },
+          //start 75% from the top of the div
+          offset: offset
+        });
+      };
+      //triger these functions on page scroll
+      new section_scroll('intro', '300%');//#, water, intro);
+
       //waypoints scroll constructor
       function scroll(elmtName, offset){
         return new Waypoint({
@@ -412,22 +440,28 @@
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-moving";
-               $("#person").css('visibility','visible').hide().fadeIn(1000);
-               $("#sadlines").css('visibility','visible').hide().fadeIn(1000);
-               $("#co2_img").css('visibility','visible').hide().fadeIn(1000);
-               $("#sadlines").css('visibility','visible').hide().fadeIn(1000);
-               $("#wilted").css('visibility','visible').hide().fadeIn(1000);
+               $("#person").animate({opacity:1}, 5000);
+               $("#sadlines").animate({opacity:1}, 5000);
+               $("#co2_img").animate({opacity:1}, 5000);
+               $("#sadlines").animate({opacity:1}, 5000);
+               $("#person").animate({opacity:1}, 5000);
+               $("#wilted").animate({opacity:1}, 5000);
+
              }
 
              if(direction == 'up'){ //? func1() : func2();
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
                document.getElementById("img_container").className = "container-static";
-               $("#person").fadeOut(1000);
-               $("#sadlines").fadeOut(1000);
-               $("#co2_img").fadeOut(1000);
-               $("#sadlines").fadeOut(1000);
-               $("#wilted").fadeOut(1000);
+               $("#bench").animate({opacity:0});
+               $("#stars2").animate({opacity:0});
+               $("#stars").animate({opacity:0});
+               $("#rain").animate({opacity:0});
+               $("#water_pic").animate({opacity:0});
+               $("#tulip").animate({opacity:0});
+               $("#tree").animate({opacity:0});    
+               $("#co2_img").animate({opacity:0});          
+
              }
           },
           //start 75% from the top of the div
@@ -435,7 +469,7 @@
         });
       };
       //triger these functions on page scroll
-      new scroll('intro', '75%');//#, water, intro);
+      new scroll('intro', '100%');//#, water, intro);
 
       function co2_scroll(elmtName, offset){
         return new Waypoint({
@@ -443,8 +477,12 @@
           handler: function(direction) {
             if (direction == 'down'){
                direction == 'down' //? func1() : func2();
-               console.log("got it 0...");
-               $("#tree").css('visibility','visible').hide().fadeIn(3000);//.style = "visibility=visible";
+               console.log("got it 1...");
+               $("#tree").animate({opacity:1}, {duration: 3000});//.style = "visibility=visible";
+            }
+            if (direction == 'up'){
+               console.log("got it 1...");
+               $("#tree").animate({opacity:0}, {duration: 3000});//.style = "visibility=visible";
             }
           },
           //start 75% from the top of the div
@@ -459,15 +497,26 @@
           element: document.getElementById(elmtName),
           handler: function(direction) {
              if (direction == 'down'){
-                  console.log("got it 1...");
+                  console.log("got it 2...");
                  //document.getElementById("co2_img").style.visibility= "hidden";
-                 $("#co2_img").fadeOut(3000);
+                 $("#co2_img").animate({opacity:0}, 3000);
                  //document.getElementById("rain").style.visibility="visible";
-                 $("#rain").css('visibility','visible').hide().fadeIn(3000);
+                 $("#rain").animate({opacity:1}, 3000);
                  //document.getElementById("water_pic").style.visibility="visible";
-                 $("#water_pic").css('visibility','visible').hide().fadeIn(3000);
+                 $("#water_pic").animate({opacity:1}, 3000);
                  //document.getElementById("tulip").style.visibility="visible";
-                 $("#tulip").css('visibility','visible').hide().fadeIn(3000);
+                 $("#tulip").animate({opacity:1}, 3000);
+             } //? func1() : func2();
+             if (direction == 'up'){
+                  console.log("got it 2...");
+                 //document.getElementById("co2_img").style.visibility= "hidden";
+                 $("#co2_img").animate({opacity:1}, 3000);
+                 //document.getElementById("rain").style.visibility="visible";
+                 $("#rain").animate({opacity:0}, 3000);
+                 //document.getElementById("water_pic").style.visibility="visible";
+                 $("#water_pic").animate({opacity:0}, 3000);
+                 //document.getElementById("tulip").style.visibility="visible";
+                 $("#tulip").animate({opacity:0}, 3000);
              } //? func1() : func2();
              
           }, 
@@ -484,11 +533,18 @@
           element: document.getElementById(elmtName),
           handler: function(direction) {
              if(direction == 'down'){ //? func1() : func2();
-               console.log("got it 1...");
+               console.log("got it 3...");
                //document.getElementById("wilted").style.visibility= "hidden";
-               $("#wilted").fadeOut(3000);
+               $("#wilted").animate({opacity:0}, 3000);
                //document.getElementById("stars").style.visibility="visible";
-               $("#stars").css('visibility','visible').hide().fadeIn(3000);
+               $("#stars").animate({opacity:1}, 3000);
+             }
+             if(direction == 'up'){ //? func1() : func2();
+               console.log("got it 3...");
+               //document.getElementById("wilted").style.visibility= "hidden";
+               $("#wilted").animate({opacity:1}, 3000);
+               //document.getElementById("stars").style.visibility="visible";
+               $("#stars").animate({opacity:0}, 3000);
              }
           }, 
           //start 75% from the top of the div
@@ -504,13 +560,23 @@
           element: document.getElementById(elmtName),
           handler: function(direction) {
             if (direction == 'down'){ //? func1() : func2();
-               console.log("got it 1...");
+               console.log("got it 4...");
                //document.getElementById("sadlines").style.visibility= "hidden";
-               $("#sadlines").fadeOut(3000);
+               $("#sadlines").animate({opacity:0}, 3000);
                //document.getElementById("bench").style.visibility="visible";
-               $("#bench").css('visibility','visible').hide().fadeIn(3000);
+               $("#bench").animate({opacity:1}, 3000);
               //document.getElementById("stars2").style.visibility="visible";
-              $("#stars2").css('visibility','visible').hide().fadeIn(3000);
+              $("#stars2").animate({opacity:1}, 3000);
+            }
+
+            if (direction == 'up'){ //? func1() : func2();
+               console.log("got it 4...");
+               //document.getElementById("sadlines").style.visibility= "hidden";
+               $("#sadlines").animate({opacity:1}, 3000);
+               //document.getElementById("bench").style.visibility="visible";
+               $("#bench").animate({opacity:0}, 3000);
+              //document.getElementById("stars2").style.visibility="visible";
+              $("#stars2").animate({opacity:0}, 3000);
             }
           }, 
           //start 75% from the top of the div

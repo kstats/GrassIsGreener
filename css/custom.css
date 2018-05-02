@@ -6,7 +6,6 @@
 	z-index: 2;
 	height:200px;
 	width:150px;
-	visibility:hidden;
 }
 
 .img-co2{
@@ -16,7 +15,6 @@
 	z-index: 2;
 	height:100px;
 	width:250px;
-	visibility:hidden;
 }
 
 .img-rain{
@@ -79,7 +77,6 @@
 	z-index: 2;
 	height:100px;
 	width:250px;
-	visibility:hidden;
 }
 
 .img-wilted{
@@ -89,7 +86,6 @@
 	z-index: 2;
 	height:100px;
 	width:75px;
-	image:hidden;
 }
 
 .img-tree{
