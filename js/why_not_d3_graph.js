@@ -99,10 +99,13 @@ $(function() {
       .attr('x', function(d, i) { return LABEL_WIDTH + xScale(parseFloat(d.percent)) - 10 })
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'end')
-      .attr('fill', 'white')
+      .style('fill', 'white')
       .attr('font-size', 12)
-      .attr('opacity', 1)
-      .text(function(d) { return d.percent + "%" });
+      .attr('opacity', 0)
+      .text(function(d) { return d.percent + "%" })
+      .transition()
+        .delay(function(d, i) { return 100 * (i + 1) + WHY_NOT_TRANSITION_MS })
+        .attr('opacity', 1);
 
     icon
       .attr('xlink:href', function(d) { return 'img/why_not/' + d.svg_name + '.svg' })
