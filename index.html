@@ -402,15 +402,27 @@
         return new Waypoint({
           element: document.getElementById(elmtName),
           handler: function(direction) {
-             direction == 'down' //? func1() : func2();
-             console.log("got it 0...");
-             //document.getElementById("water_pic").style = "visibility=visible";
-             document.getElementById("img_container").className = "container-moving";
-             $("#person").css('visibility','visible').hide().fadeIn(3000);
-             $("#sadlines").css('visibility','visible').hide().fadeIn(3000);
-             $("#co2_img").css('visibility','visible').hide().fadeIn(3000);
-             $("#sadlines").css('visibility','visible').hide().fadeIn(3000);
-             $("#wilted").css('visibility','visible').hide().fadeIn(3000);
+             if(direction == 'down'){ //? func1() : func2();
+               console.log("got it 0...");
+               //document.getElementById("water_pic").style = "visibility=visible";
+               document.getElementById("img_container").className = "container-moving";
+               $("#person").css('visibility','visible').hide().fadeIn(1000);
+               $("#sadlines").css('visibility','visible').hide().fadeIn(1000);
+               $("#co2_img").css('visibility','visible').hide().fadeIn(1000);
+               $("#sadlines").css('visibility','visible').hide().fadeIn(1000);
+               $("#wilted").css('visibility','visible').hide().fadeIn(1000);
+             }
+
+             if(direction == 'up'){ //? func1() : func2();
+               console.log("got it 0...");
+               //document.getElementById("water_pic").style = "visibility=visible";
+               document.getElementById("img_container").className = "container-static";
+               $("#person").fadeOut(1000);
+               $("#sadlines").fadeOut(1000);
+               $("#co2_img").fadeOut(1000);
+               $("#sadlines").fadeOut(1000);
+               $("#wilted").fadeOut(1000);
+             }
           },
           //start 75% from the top of the div
           offset: offset
@@ -423,11 +435,11 @@
         return new Waypoint({
           element: document.getElementById(elmtName),
           handler: function(direction) {
-             direction == 'down' //? func1() : func2();
-             console.log("got it 0...");
-             //document.getElementById("water_pic").style = "visibility=visible";
-
-             $("#tree").css('visibility','visible').hide().fadeIn(3000);//.style = "visibility=visible";
+            if (direction == 'down'){
+               direction == 'down' //? func1() : func2();
+               console.log("got it 0...");
+               $("#tree").css('visibility','visible').hide().fadeIn(3000);//.style = "visibility=visible";
+            }
           },
           //start 75% from the top of the div
           offset: offset
@@ -440,16 +452,18 @@
         return new Waypoint({
           element: document.getElementById(elmtName),
           handler: function(direction) {
-             direction == 'down' //? func1() : func2();
-             console.log("got it 1...");
-             //document.getElementById("co2_img").style.visibility= "hidden";
-             $("#co2_img").fadeOut(3000);
-             //document.getElementById("rain").style.visibility="visible";
-             $("#rain").css('visibility','visible').hide().fadeIn(3000);
-             //document.getElementById("water_pic").style.visibility="visible";
-             $("#water_pic").css('visibility','visible').hide().fadeIn(3000);
-             //document.getElementById("tulip").style.visibility="visible";
-             $("#tulip").css('visibility','visible').hide().fadeIn(3000);
+             if (direction == 'down'){
+                  console.log("got it 1...");
+                 //document.getElementById("co2_img").style.visibility= "hidden";
+                 $("#co2_img").fadeOut(3000);
+                 //document.getElementById("rain").style.visibility="visible";
+                 $("#rain").css('visibility','visible').hide().fadeIn(3000);
+                 //document.getElementById("water_pic").style.visibility="visible";
+                 $("#water_pic").css('visibility','visible').hide().fadeIn(3000);
+                 //document.getElementById("tulip").style.visibility="visible";
+                 $("#tulip").css('visibility','visible').hide().fadeIn(3000);
+             } //? func1() : func2();
+             
           }, 
           //start 75% from the top of the div
           offset: offset
@@ -463,12 +477,13 @@
         return new Waypoint({
           element: document.getElementById(elmtName),
           handler: function(direction) {
-             direction == 'down' //? func1() : func2();
-             console.log("got it 1...");
-             //document.getElementById("wilted").style.visibility= "hidden";
-             $("#wilted").fadeOut(3000);
-             //document.getElementById("stars").style.visibility="visible";
-             $("#stars").css('visibility','visible').hide().fadeIn(3000);
+             if(direction == 'down'){ //? func1() : func2();
+               console.log("got it 1...");
+               //document.getElementById("wilted").style.visibility= "hidden";
+               $("#wilted").fadeOut(3000);
+               //document.getElementById("stars").style.visibility="visible";
+               $("#stars").css('visibility','visible').hide().fadeIn(3000);
+             }
           }, 
           //start 75% from the top of the div
           offset: offset
@@ -482,14 +497,15 @@
         return new Waypoint({
           element: document.getElementById(elmtName),
           handler: function(direction) {
-             direction == 'down' //? func1() : func2();
-             console.log("got it 1...");
-             //document.getElementById("sadlines").style.visibility= "hidden";
-             $("#sadlines").fadeOut(3000);
-             //document.getElementById("bench").style.visibility="visible";
-             $("#bench").css('visibility','visible').hide().fadeIn(3000);
-            //document.getElementById("stars2").style.visibility="visible";
-            $("#stars2").css('visibility','visible').hide().fadeIn(3000);
+            if (direction == 'down'){ //? func1() : func2();
+               console.log("got it 1...");
+               //document.getElementById("sadlines").style.visibility= "hidden";
+               $("#sadlines").fadeOut(3000);
+               //document.getElementById("bench").style.visibility="visible";
+               $("#bench").css('visibility','visible').hide().fadeIn(3000);
+              //document.getElementById("stars2").style.visibility="visible";
+              $("#stars2").css('visibility','visible').hide().fadeIn(3000);
+            }
           }, 
           //start 75% from the top of the div
           offset: offset
