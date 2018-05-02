@@ -311,14 +311,14 @@ $(function() {
     chart.style('left', $('#whyNotChart').position() + 'px');
 
     $("#whyNotChart").insertAfter($("#whyNotChartFillerStart"));
-    $("#whyNotChartFillerEnd").css('height', (SMALL_HEIGHT + 60) + 'px');
+    $("#whyNotChartFillerEnd").css('height', (SMALL_HEIGHT + 160) + 'px');
   }
 
   function makeStaticEnd() {
     // console.log('makeStaticEnd');
 
     chart
-      .attr('height', (SMALL_HEIGHT + 60) + 'px')
+      .attr('height', (SMALL_HEIGHT + 160) + 'px')
       .attr('width', SMALL_WIDTH);
     chart.style('position', 'static');
     $("#whyNotChart").insertAfter($("#whyNotChartFillerEnd"));
@@ -350,8 +350,6 @@ $(function() {
   setWaypoint('whyNotChartFillerStart', '100px', () => {}, updateReasonState([], [], data.map(o => o.reason)));
   setWaypoint('whyNotChartFillerStart', '100px', smallBar, largeBar);
   setWaypoint('whyNotChartFillerStart', '100px', makeFixedStart, makeStaticStart);
-  // TODO: Tableau plug-in messes up waypoint here :'( May need to wait until Tableau
-  // is loaded to do these, or give it a fixed height to start.
 
   let waypointMap = {}
   let waypoint
@@ -374,6 +372,8 @@ $(function() {
     }
     prevReasons = currReasons;
   }
-  setWaypoint('whyNotChartFillerEnd', '100px', updateReasonState([], prevReasons), updateReasonState(prevReasons))
+  // TODO: Remove hard-coding :/
+  let finalReasons = ['Lacking skill', 'Poor health', 'Too crowded', 'Afraid of others', 'Other']
+  setWaypoint('whyNotChartFillerEnd', '100px', updateReasonState(finalReasons, prevReasons), updateReasonState(prevReasons, [], finalReasons))
   setWaypoint('whyNotChartFillerEnd', '100px', makeStaticEnd, makeFixedEnd);
 });
