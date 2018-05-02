@@ -505,7 +505,6 @@
              if(direction == 'up'){ //? func1() : func2();
                console.log("got it 0...");
                //document.getElementById("water_pic").style = "visibility=visible";
-               document.getElementById("img_container").className = "container-static";
                $("#bench").stop().animate({opacity:0});
                $("#stars2").stop().animate({opacity:0});
                $("#stars").stop().animate({opacity:0});
@@ -514,6 +513,11 @@
                $("#tulip").stop().animate({opacity:0});
                $("#tree").stop().animate({opacity:0});
                $("#co2_img").stop().animate({opacity:0});
+               $("#person").stop().animate({opacity:0});
+               $("#co2_img").stop().animate({opacity:0});
+               $("#sadlines").stop().animate({opacity:0});
+               $("#wilted").stop().animate({opacity:0});
+               document.getElementById("img_container").className = "container-static";
 
              }
           },
