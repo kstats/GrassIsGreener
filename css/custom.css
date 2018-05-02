@@ -111,7 +111,7 @@
 
 .container-moving{
 	position: fixed;
-	left: 500px;
+	left: 600px;
 	top:0px;
 	z-index:0;
 	height:600px;
