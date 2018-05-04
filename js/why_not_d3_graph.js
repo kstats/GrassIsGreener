@@ -99,7 +99,6 @@ $(function() {
       .attr('x', function(d, i) { return LABEL_WIDTH + 10 })
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'start')
-      .style('fill', '#E8E0CC')
       .attr('font-size', 14)
       .attr('font-weight', 'bold')
       .attr('opacity', 0)
