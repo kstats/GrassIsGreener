@@ -24,7 +24,7 @@ $(function() {
         LARGE_HEIGHT = 600,
         SMALL_WIDTH = 280,
         SMALL_HEIGHT = 300,
-        LABEL_WIDTH = 200;
+        LABEL_WIDTH = 240;
 
   let chart = d3.select('#whyNotChart');
   chart
@@ -63,7 +63,7 @@ $(function() {
     // Add category labels
     reasonLabel
       .attr('y', function(d, i) { return yScale(i) + barHeight / 2})
-      .attr('x', 0)
+      .attr('x', barHeight + 5)
       .attr('alignment-baseline', 'middle')
       .attr('font-size', 12)
       .text(function(d) { return d.reason })
@@ -96,11 +96,12 @@ $(function() {
     // Add percent labels
     percentLabel
       .attr('y', function(d, i) { return yScale(i) + barHeight / 2})
-      .attr('x', function(d, i) { return LABEL_WIDTH + xScale(parseFloat(d.percent)) - 10 })
+      .attr('x', function(d, i) { return LABEL_WIDTH + 10 })
       .attr('alignment-baseline', 'middle')
-      .attr('text-anchor', 'end')
-      .style('fill', 'white')
-      .attr('font-size', 12)
+      .attr('text-anchor', 'start')
+      .style('fill', '#E8E0CC')
+      .attr('font-size', 14)
+      .attr('font-weight', 'bold')
       .attr('opacity', 0)
       .text(function(d) { return d.percent + "%" })
       .transition()
@@ -109,7 +110,14 @@ $(function() {
 
     icon
       .attr('xlink:href', function(d) { return 'img/why_not/' + d.svg_name + '.svg' })
-      .attr('opacity', 0);
+      .attr('opacity', 0)
+      .attr('y', function(d, i) { return yScale(i) })
+      .attr('height', barHeight)
+      .attr('x', 0)
+      .attr('width', barHeight)
+      .transition()
+        .delay(function(d, i) { return 100 * i })
+        .attr('opacity', 1);
   }
 
   function destroyBar() {
@@ -132,7 +140,7 @@ $(function() {
       .transition()
         .duration(0)
         .attr('y', function(d, i) { return yScale(i) + barHeight / 2})
-        .attr('x', 0)
+        .attr('x', barHeight + 5)
         .attr('alignment-baseline', 'middle')
         .attr('opacity', 0)
         .transition()
@@ -143,9 +151,14 @@ $(function() {
       .duration(WHY_NOT_TRANSITION_MS)
       .attr('opacity', 1)
       .delay(WHY_NOT_TRANSITION_MS);
+
     icon.transition()
-      .duration(0)
-      .attr('opacity', 0);
+      .attr('y', function(d, i) { return yScale(i) })
+      .attr('height', barHeight)
+      .attr('x', 0)
+      .attr('width', barHeight)
+      .duration(WHY_NOT_TRANSITION_MS)
+      .attr('opacity', 1);
 
     rect.transition('updateChartSize')
       .duration(WHY_NOT_TRANSITION_MS)
@@ -171,14 +184,13 @@ $(function() {
       .attr('opacity', 0);
 
     // Resize and place icons appropriately.
-    icon
+    icon.transition()
+      .duration(WHY_NOT_TRANSITION_MS)
       .attr('y', function(d, i) { return yScale(i) })
       .attr('height', barHeight)
       .attr('x', barHeight)
       .attr('width', barHeight)
-      .transition()
-        .delay(WHY_NOT_TRANSITION_MS)
-        .attr('opacity', 1);
+      .attr('opacity', 1);
 
     // Update rectangles
     rect.transition('updateChartSize')
