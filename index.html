@@ -29,6 +29,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
     <script src="js/why_not_d3_graph.js"></script>
     <script src="js/impact-on-body-d3.js"></script>
     <script src="js/mental-health.js"></script>
@@ -185,7 +186,9 @@
             Why Not Go Outside?
           </h2>
           <h5 class="mb-2 my-5">
-            The Outdoor Industry Association ran a survey to understand why people choose not to participate in outdoor recreation activites. Below were the top responses:
+            The Outdoor Industry Association ran a survey
+            <a href="https://outdoorindustry.org/participation/outdoor-foundation-research/reports/" data-toggle="tooltip" data-placement="top" title="'Outdoor Participation Report', The Outdoor Foundation, 2017" target="_blank">[src]</a>
+            to understand why people choose not to participate in outdoor recreation activites. Below were the top responses:
           </h5>
           <p class="text-muted mb-2">Participants were able to select multiple responses.</p>
           <div id="whyNotChartFillerStart" style="height:0px; width:100%">
@@ -726,7 +729,12 @@
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
 
-   
+    <!-- Enable bootstrap tooltips -->
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 
 
   </body>
