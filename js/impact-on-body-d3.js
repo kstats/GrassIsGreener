@@ -48,16 +48,21 @@ var cityImg = g.append("svg:image")
     .attr("y", height/5)
     .on("click", clickCity)
 
-var circleSize = 58;
+var div = g.append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+var circleSize = 58
+    greenX = 110,
+    greenY = 110;
 
 var staticGreen = g.append("circle")
-    .attr('cx', 110)
-    .attr('cy', 110)
+    .attr('cx', greenX)
+    .attr('cy', greenY)
     .attr('r', circleSize)
     .style("fill", "668203")
     .style("opacity", 0.3)
     .on("click", clickForest)
-    .on("mouseover", hoverForest)
 
 var staticRed = g.append("circle")
     .attr('cx', 850)
@@ -66,7 +71,6 @@ var staticRed = g.append("circle")
     .style("fill", "F481A4")
     .style("opacity", 0.3)
     .on("click", clickCity)
-    .on("mouseover", hoverCity)
 
 /*
  * Pulsing circles
@@ -224,14 +228,6 @@ function redraw() {
 function mousemove() {
     var point = d3.mouse(this);
     add_particles(point[0], point[1], 2);
-}
-
-function hoverCity() {
-    console.log("hovering over the cityyyyyy")
-}
-
-function hoverForest() {
-    console.log("hovering over the foresttttt")
 }
 
 function clickForest() {
