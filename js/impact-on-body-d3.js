@@ -90,7 +90,7 @@ function pulseCircles(){
       .transition()
       .duration(1000)
       .ease(d3.easeSinIn)
-      .attr('r', 70)
+      .attr('r', 100)
       //.style("fill", "white")
       .style("opacity", 0.4)
       .on("end", repeat);
@@ -105,7 +105,7 @@ function pulseCircles(){
       .transition()
       .duration(1000)
       .ease(d3.easeSinIn)
-      .attr('r', 70)
+      .attr('r', 100)
       //.style("fill", "white")
       .style("opacity", 0.4)
       .on("end", repeat);
