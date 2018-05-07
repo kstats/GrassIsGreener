@@ -17,7 +17,7 @@ var width = 960,
     imgSize = 120;
 
 var wrapper = d3.select("#sparkle-wrapper")
-            .attr("width", width)
+            .attr("width", "100%")
             .attr("height", height); // set size of background rectangle
 
 var person = d3.select("#personFill")
@@ -44,7 +44,7 @@ var cityImg = g.append("svg:image")
     .attr("xlink:href", "img/impact_body/noun_164718.svg") //city image
     .attr("width", imgSize)
     .attr("height", imgSize)
-    .attr("x", width - imgSize-50)
+    .attr("x", width-70)
     .attr("y", height/5)
     .on("click", clickCity)
 
@@ -60,9 +60,11 @@ var staticGreen = g.append("circle")
     .style("opacity", 0.3)
     .on("click", clickForest)
 
+var redX = 950,
+    redY = 110;
 var staticRed = g.append("circle")
-    .attr('cx', 850)
-    .attr('cy', 110)
+    .attr('cx', redX)
+    .attr('cy', redY)
     .attr('r', circleSize-6)
     .style("fill", "F481A4")
     .style("opacity", 0.3)
@@ -73,13 +75,13 @@ var staticRed = g.append("circle")
  */
 function pulseCircles(){
     var pulseGreen = pulse.append("circle")
-        .attr('cx', 110)
-        .attr('cy', 110)
+        .attr('cx', greenX)
+        .attr('cy', greenY)
         .style("fill", "668203")
 
     var pulseRed = pulse.append("circle")
-        .attr('cx', 850)
-        .attr('cy', 110)
+        .attr('cx', redX)
+        .attr('cy', redY)
     
     repeat();
     
