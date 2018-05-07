@@ -48,11 +48,7 @@ var cityImg = g.append("svg:image")
     .attr("y", height/5)
     .on("click", clickCity)
 
-var div = g.append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
-var circleSize = 58
+var circleSize = 58,
     greenX = 110,
     greenY = 110;
 
