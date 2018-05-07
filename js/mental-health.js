@@ -66,17 +66,16 @@ var width = 960,
 
 			//Create a gradient for the fill
 			var colors = ["#490A3D","#BD1550","#E97F02","#F8CA00","#8A9B0F"];
-			forestColors = ['#8BB004', '#1D2900', '#3E4F02', '#18471D', '#151F00'],
 			defs.append("linearGradient")
 				.attr("id", "gradientRainbow")
 				.attr("gradientUnits", "userSpaceOnUse") 
 				.attr("x1", -hexWidth/2*0.85).attr("y1", 0)
 				.attr("x2", hexWidth/2*0.85).attr("y2", 0)
 				.selectAll("stop") 
-				.data(d3.range(forestColors.length))                  
+				.data(d3.range(colors.length))                  
 				.enter().append("stop") 
-				.attr("offset", function(d,i) { return (i/(forestColors.length-1)*100) + "%"; })   
-				.attr("stop-color", function(d) { return forestColors[d]; });
+				.attr("offset", function(d,i) { return (i/(colors.length-1)*100) + "%"; })   
+				.attr("stop-color", function(d) { return colors[d]; });
 
 			//Create a clip path that is the same as the top hexagon
 			defs.append("clipPath")
