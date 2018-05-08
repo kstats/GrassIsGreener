@@ -123,9 +123,11 @@
                     <g id="text" width="100%">
                       <p style="max-width:470px; float:left">Several studies have shown that <span class="highlighted-green">walking 
                         slowly in a forest enhances immune functions</span> by an increase in natural killer (NK) cell activity and the levels of 
-                        intracellular proteins that are associated with healthy lifestyles [6]...</p>
+                        intracellular proteins that are associated with healthy lifestyles...</p>
                       <p style="max-width:480px; float:right">...Whereas walking in <span class="highlighted-red">an urban environment results in a higher level of stress</span> — 
-                        as evidenced by an elevated serum cortisol level - than in the forest group.</p>
+                        as evidenced by an elevated serum cortisol level - than in the forest group  <a href="https://www.ncbi.nlm.nih.gov/pubmed/22840583" 
+                        data-toggle="tooltip" data-placement="top" title="'Effects of short-term forest bathing on human health in a broad-leaved
+                        evergreen forest in Zhejiang Province, China.', Biomedical Environmental Science, 2012" target="_blank">[src]</a>.</p>
                     </g>
                 </svg>
             </div> <!--Close of outdoorImpact div-->
@@ -276,79 +278,79 @@
                 // add map navigation controls
                 map.addControl(new mapboxgl.NavigationControl());
                 // do stuff on map load
-                map.on("load", function(){
-                  //load our data
-                  d3.json("./json/geo_json.json", function(error, data){
-                    if(error) throw error;
-                    console.log(data);
-                    //add our source
-                    map.addSource("crashes",{
-                      type: "geojson",
-                      data: data//,
-                      //cluster: true
-                    });
+                // map.on("load", function(){
+                //   //load our data
+                //   d3.json("./json/geo_json.json", function(error, data){
+                //     if(error) throw error;
+                //     console.log(data);
+                //     //add our source
+                //     map.addSource("crashes",{
+                //       type: "geojson",
+                //       data: data//,
+                //       //cluster: true
+                //     });
                     
-                    //add the layer to the map
-                    map.addLayer({
-                      id: "crashes", 
-                      type: "circle", 
-                      source: "crashes",
-                      layout: {},
-                      'paint': {
-                        'circle-color': [
-                          'match',
-                          ['get', 'park_type'],
-                            'Mini Park', '#8E44AD',
-                            'Neighborhood Park or Playground', '#52BE80',
-                            'Community Garden', '#F7DC6F',
-                            'Regional Park', '#E74C3C',
-                            'Family Camp', '#5DADE2',
-                            'Concession', '#00FFFF',
-                            'Civic Plaza or Square', '#FF00FF',
-                            'Parkway', '#808000',
-                            'Zoologic Garden', '#FFFF00',
-                            /* other */ '#ccc'
-                          ],
-                        'circle-radius': {
-                          'base': 150.00,
-                          'stops': [[12, 5], [22, 180]]
-                        }
-                      }
+                //     //add the layer to the map
+                //     map.addLayer({
+                //       id: "crashes", 
+                //       type: "circle", 
+                //       source: "crashes",
+                //       layout: {},
+                //       'paint': {
+                //         'circle-color': [
+                //           'match',
+                //           ['get', 'park_type'],
+                //             'Mini Park', '#8E44AD',
+                //             'Neighborhood Park or Playground', '#52BE80',
+                //             'Community Garden', '#F7DC6F',
+                //             'Regional Park', '#E74C3C',
+                //             'Family Camp', '#5DADE2',
+                //             'Concession', '#00FFFF',
+                //             'Civic Plaza or Square', '#FF00FF',
+                //             'Parkway', '#808000',
+                //             'Zoologic Garden', '#FFFF00',
+                //             /* other */ '#ccc'
+                //           ],
+                //         'circle-radius': {
+                //           'base': 150.00,
+                //           'stops': [[12, 5], [22, 180]]
+                //         }
+                //       }
 
-                    }); //ends map layer  
-                    var popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
+                //     }); //ends map layer  
+                //     var popup = new mapboxgl.Popup({
+                //         closeButton: false,
+                //         closeOnClick: false
+                //     });
 
-                    map.on('mouseenter', 'crashes', function(e) {
-                        // Change the cursor style as a UI indicator.
-                        map.getCanvas().style.cursor = 'pointer';
+                //     map.on('mouseenter', 'crashes', function(e) {
+                //         // Change the cursor style as a UI indicator.
+                //         map.getCanvas().style.cursor = 'pointer';
 
-                        var coordinates = e.features[0].geometry.coordinates.slice();
-                        var description = e.features[0].properties.park_type;
+                //         var coordinates = e.features[0].geometry.coordinates.slice();
+                //         var description = e.features[0].properties.park_type;
 
-                        // Ensure that if the map is zoomed out such that multiple
-                        // copies of the feature are visible, the popup appears
-                        // over the copy being pointed to.
-                        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                        }
+                //         // Ensure that if the map is zoomed out such that multiple
+                //         // copies of the feature are visible, the popup appears
+                //         // over the copy being pointed to.
+                //         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                //             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                //         }
 
-                        // Populate the popup and set its coordinates
-                        // based on the feature found.
-                        popup.setLngLat(coordinates)
-                            .setHTML(description)
-                            .addTo(map);
-                    });
+                //         // Populate the popup and set its coordinates
+                //         // based on the feature found.
+                //         popup.setLngLat(coordinates)
+                //             .setHTML(description)
+                //             .addTo(map);
+                //     });
 
-                    map.on('mouseleave', 'places', function() {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });                 
-                  }); //ends d3.json
+                //     map.on('mouseleave', 'places', function() {
+                //         map.getCanvas().style.cursor = '';
+                //         popup.remove();
+                //     });                 
+                //   }); //ends d3.json
                   
-                }); //ends maponload
+                // }); //ends maponload
                 
               </script>
 
