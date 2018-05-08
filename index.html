@@ -67,6 +67,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#Community">Community Benefits</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#page-top"><img src="img/noun_929001.svg" width="30"></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -294,67 +297,6 @@
                 //       //cluster: true
                 //     });
                     
-<<<<<<< HEAD
-                //     //add the layer to the map
-                //     map.addLayer({
-                //       id: "crashes", 
-                //       type: "circle", 
-                //       source: "crashes",
-                //       layout: {},
-                //       'paint': {
-                //         'circle-color': [
-                //           'match',
-                //           ['get', 'park_type'],
-                //             'Mini Park', '#8E44AD',
-                //             'Neighborhood Park or Playground', '#52BE80',
-                //             'Community Garden', '#F7DC6F',
-                //             'Regional Park', '#E74C3C',
-                //             'Family Camp', '#5DADE2',
-                //             'Concession', '#00FFFF',
-                //             'Civic Plaza or Square', '#FF00FF',
-                //             'Parkway', '#808000',
-                //             'Zoologic Garden', '#FFFF00',
-                //             /* other */ '#ccc'
-                //           ],
-                //         'circle-radius': {
-                //           'base': 150.00,
-                //           'stops': [[12, 5], [22, 180]]
-                //         }
-                //       }
-
-                //     }); //ends map layer  
-                //     var popup = new mapboxgl.Popup({
-                //         closeButton: false,
-                //         closeOnClick: false
-                //     });
-
-                //     map.on('mouseenter', 'crashes', function(e) {
-                //         // Change the cursor style as a UI indicator.
-                //         map.getCanvas().style.cursor = 'pointer';
-
-                //         var coordinates = e.features[0].geometry.coordinates.slice();
-                //         var description = e.features[0].properties.park_type;
-
-                //         // Ensure that if the map is zoomed out such that multiple
-                //         // copies of the feature are visible, the popup appears
-                //         // over the copy being pointed to.
-                //         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                //             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                //         }
-
-                //         // Populate the popup and set its coordinates
-                //         // based on the feature found.
-                //         popup.setLngLat(coordinates)
-                //             .setHTML(description)
-                //             .addTo(map);
-                //     });
-
-                //     map.on('mouseleave', 'places', function() {
-                //         map.getCanvas().style.cursor = '';
-                //         popup.remove();
-                //     });                 
-                //   }); //ends d3.json
-=======
                     //add the layer to the map
                     map.addLayer({
                       id: "crashes", 
@@ -415,7 +357,6 @@
                         popup.remove();
                     });                 
                   }); //ends d3.json
->>>>>>> c51ea956228953c6ed20ede7d661791bbea0c8bc
                   
                 // }); //ends maponload
                 
