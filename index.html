@@ -285,17 +285,17 @@
                 // add map navigation controls
                 map.addControl(new mapboxgl.NavigationControl());
                 // do stuff on map load
-                // map.on("load", function(){
-                //   //load our data
-                //   d3.json("./json/geo_json.json", function(error, data){
-                //     if(error) throw error;
-                //     console.log(data);
-                //     //add our source
-                //     map.addSource("crashes",{
-                //       type: "geojson",
-                //       data: data//,
-                //       //cluster: true
-                //     });
+                map.on("load", function(){
+                  //load our data
+                  d3.json("./json/geo_json.json", function(error, data){
+                    if(error) throw error;
+                    console.log(data);
+                    //add our source
+                    map.addSource("crashes",{
+                      type: "geojson",
+                      data: data//,
+                      //cluster: true
+                    });
                     
                     //add the layer to the map
                     map.addLayer({
